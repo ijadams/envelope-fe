@@ -28,7 +28,6 @@ export class App extends Component {
 
     componentWillUnmount() {
         this.navsub.unsubscribe();
-        this.usersub.unsubscribe();
     }
 
     render() {

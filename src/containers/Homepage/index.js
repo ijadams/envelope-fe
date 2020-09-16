@@ -18,7 +18,7 @@ export class Homepage extends Component {
                     {({data: {homepage}}) => {
                         return (
                             <div>
-                                <h1>{homepage.cta_button_text}</h1>
+                                <h1>{homepage.herotext}</h1>
                             </div>
                         );
                     }}
