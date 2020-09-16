@@ -1,0 +1,105 @@
+{
+  "views": {
+    "forgot-password": [
+      {
+        "customUKClass": "uk-grid-column-medium",
+        "label": "Enter your email",
+        "name": "email",
+        "type": "email",
+        "placeholder": "johndoe@gmail.com"
+      }
+    ],
+    "login": [
+      {
+        "customUKClass": "uk-grid-column-medium",
+        "label": "Username",
+        "name": "identifier",
+        "type": "text",
+        "placeholder": "johndoe@gmail.com"
+      },
+      {
+        "customUKClass": "uk-grid-column-medium",
+        "label": "Password",
+        "name": "password",
+        "type": "password"
+      },
+      {
+        "customUKClass": "col-md-6",
+        "label": "Remember me",
+        "name": "rememberMe",
+        "type": "checkbox"
+      }
+    ],
+    "register": [
+      {
+        "customUKClass": "uk-grid-column-medium",
+        "label": "Username",
+        "name": "username",
+        "type": "text",
+        "placeholder": "Bob"
+      },
+      {
+        "customUKClass": "uk-grid-column-medium",
+        "label": "Password",
+        "name": "password",
+        "type": "password"
+      },
+      {
+        "customUKClass": "uk-grid-column-medium",
+        "label": "Confirm Password",
+        "name": "confirmPassword",
+        "type": "password"
+      },
+      {
+        "customUKClass": "uk-grid-column-medium",
+        "label": "Email",
+        "name": "email",
+        "placeholder": "johndoe@gmail.com",
+        "type": "email"
+      }
+    ],
+    "reset-password": [
+      {
+        "customUKClass": "uk-grid-column-medium",
+        "name": "password",
+        "type": "password",
+        "label": "Password"
+      },
+      {
+        "customUKClass": "uk-grid-column-medium",
+        "name": "passwordConfirmation",
+        "type": "password",
+        "label": "Confirm Password"
+      }
+    ]
+  },
+  "data": {
+    "login": {
+      "value": {
+        "identifier": "",
+        "password": "",
+        "rememberMe": false
+      }
+    },
+    "forgot-password": {
+      "value": {
+        "email": ""
+      }
+    },
+    "register": {
+      "value": {
+        "username": "",
+        "password": "",
+        "confirmPassword": "",
+        "email": ""
+      }
+    },
+    "reset-password": {
+      "value": {
+        "password": "",
+        "passwordConfirmation": "",
+        "code": ""
+      }
+    }
+  }
+}

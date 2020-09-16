@@ -1,0 +1,57 @@
+section.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  div {
+    text-align: center;
+  }
+  h1 {
+    font-size: 4.618rem;
+    font-weight: 700;
+    width: 50%;
+    text-align: center;
+    text-align: center;
+    line-height: 98%;
+    letter-spacing: -1px;
+    margin: 0 auto;
+  }
+  p {
+    padding-top: 1.8rem;
+    color: #333;
+    font-size: 1.222rem;
+    width: 33%;
+    margin: 0 auto;
+  }
+  button {
+    background: transparent !important;
+    margin: 0rem 0.5rem;
+    margin-top: 2rem;
+    text-transform: capitalize;
+    letter-spacing: 0px !important;
+    font-weight: 500 !important;
+    font-size: 1rem;
+    min-width: 150px !important;
+    min-height: 50px !important;
+    &.two {
+      background: #abffdb !important;
+      border-color: #abffdb;
+      &:hover {
+        border-color: #333 !important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    min-height: 50vh;
+    h1 {
+      font-size: 3.3rem !important;
+    }
+    p, h1 {
+      width: 80%;
+    }
+  }
+
+}

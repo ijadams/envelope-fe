@@ -1,0 +1,32 @@
+@import './nav/nav';
+@import './homepage/banner';
+@import './homepage/home';
+@import './footer/footer';
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Heebo', sans-serif;
+  button {
+    border-radius: 3px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1px !important;
+  }
+  p, h1, h2, h3 {
+    font-family: 'Heebo', sans-serif;
+  }
+}
+
+.loader {
+  position: fixed;
+  z-index: 1;
+  height: 100vh;
+  width: 100vw;
+  background: white;
+  transition: 0.2s ease-in-out;
+}

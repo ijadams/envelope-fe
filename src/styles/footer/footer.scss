@@ -1,0 +1,34 @@
+.footer {
+  background-color: #222222;
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  .container {
+    width: 100%;
+    text-align: center;
+    @media screen and (max-width: 768px) {
+      width: 80%;
+    }
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  ul li {
+    display: inline-block;
+    svg {
+      color: #ee3a74;
+      height: 25px;
+    }
+  }
+
+  .copyright {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: #fffcf4;
+  }
+}
