@@ -25,7 +25,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div className="copyright">
-                    <p>© 2020 4 Forty Media, Inc. All rights reserved.Terms, Privacy, CA Privacy, Copyright, & Cookies</p>
+                    <p>© 2020 Envelope, Inc. All rights reserved.Terms, Privacy, CA Privacy, Copyright, & Cookies</p>
                 </div>
             </div>
         </div>

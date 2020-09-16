@@ -67,11 +67,11 @@ export class Nav extends Component {
                                     <div className="uk-navbar-left">
                                         <ul className="uk-navbar-nav">
                                             <li className="desktop">
-                                                <Link to="/"><img alt="4-Forty Logo"
+                                                <Link to="/"><img alt="Envelope Logo"
                                                                   src={desktopimageUrlImageUrl}/></Link>
                                             </li>
                                             <li className="mobile">
-                                                <Link to="/"><img alt="4-Forty Logo" src={mobileImageUrl}/></Link>
+                                                <Link to="/"><img alt="Envelope Logo" src={mobileImageUrl}/></Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -90,16 +90,6 @@ export class Nav extends Component {
                                                     </li>
                                                 );
                                             })}
-                                            <li>
-                                                <a href={nav.signup_link}
-                                                   rel="noopener noreferrer"
-                                                   target="_blank">
-                                                    <button
-                                                        className="uk-button uk-button-default uk-button-secondary">
-                                                        {nav.signup_text}
-                                                    </button>
-                                                </a>
-                                            </li>
                                         </ul>
                                     </div>
 
@@ -127,16 +117,6 @@ export class Nav extends Component {
                                                     </li>
                                                 );
                                             })}
-                                            <li>
-                                                <a
-                                                    href={nav.signup_link}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="uk-link-reset"
-                                                >
-                                                    {nav.signup_text}
-                                                </a>
-                                            </li>
                                         </ul>
                                     </div>
                                 </nav>
