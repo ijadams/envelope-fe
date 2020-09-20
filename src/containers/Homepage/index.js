@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Query from "../../components/Query";
-import HOMEPAGE_QUERY from "../../queries/homepage/homepage";
+import HOMEPAGE_QUERY from "../../queries/info/info";
 
 export class Homepage extends Component {
     constructor() {
@@ -18,7 +18,6 @@ export class Homepage extends Component {
                     {({data: {homepage}}) => {
                         return (
                             <div>
-                                <h1>{homepage.herotext}</h1>
                             </div>
                         );
                     }}

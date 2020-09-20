@@ -1,7 +1,25 @@
 @import './nav/nav';
-@import './homepage/banner';
 @import './homepage/home';
 @import './footer/footer';
+
+
+
+@font-face {
+  font-family: 'NeueMachina-Light';
+  src: url("https://ijadams.s3.amazonaws.com/envelope/NeueMachina-Light.ttf") format('ttf');
+}
+
+@font-face {
+  font-family: 'NeueMachina-Regular';
+  src: url("https://ijadams.s3.amazonaws.com/envelope/NeueMachina-Regular.ttf") format('ttf');
+}
+
+
+@font-face {
+  font-family: 'Romie-Regular';
+  src: url("https://ijadams.s3.amazonaws.com/envelope/Romie-Regular.ttf") format('ttf');
+}
+
 
 html, body {
   height: 100%;
@@ -11,14 +29,14 @@ html, body {
 }
 
 body {
-  font-family: 'Heebo', sans-serif;
+  font-family: 'NeueMachina-Regular', sans-serif;
   button {
     border-radius: 3px !important;
     font-weight: 400 !important;
     letter-spacing: 1px !important;
   }
   p, h1, h2, h3 {
-    font-family: 'Heebo', sans-serif;
+    font-family: 'NeueMachina-Regular', sans-serif;
   }
 }
 
