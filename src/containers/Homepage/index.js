@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Query from "../../components/Query";
-import HOMEPAGE_QUERY from "../../queries/info/info";
+import INFO_QUERY from "../../queries/info/info";
 
 export class Homepage extends Component {
     constructor() {
@@ -14,10 +14,11 @@ export class Homepage extends Component {
     render() {
         return (
             <div>
-                <Query query={HOMEPAGE_QUERY} id={null}>
-                    {({data: {homepage}}) => {
+                <Query query={INFO_QUERY} id={null}>
+                    {({data: {info}}) => {
                         return (
                             <div>
+                                {info.top}
                             </div>
                         );
                     }}

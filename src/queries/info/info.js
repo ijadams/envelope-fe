@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 const INFO_QUERY = gql`
-    query Homepage {
+    query Info {
         info {
             top
             bottom

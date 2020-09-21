@@ -3,7 +3,6 @@
 @import './footer/footer';
 
 
-
 @font-face {
   font-family: 'NeueMachina-Light';
   src: url("https://ijadams.s3.amazonaws.com/envelope/NeueMachina-Light.ttf") format('ttf');
@@ -24,6 +23,7 @@
 html, body {
   height: 100%;
   width: 100%;
+  background: black;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
