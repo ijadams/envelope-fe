@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Query from "../../components/Query";
-import INFO_QUERY from "../../queries/info/info";
+import PROJECTS_QUERY from "../../queries/projects/projects";
+import Project from '../../components/Project/index';
 
 export class Homepage extends Component {
     constructor() {
@@ -12,13 +13,32 @@ export class Homepage extends Component {
     }
 
     render() {
+        const settings = {
+            dots: true,
+            infinite: true,
+            fade: true,
+            speed: 500,
+            lazyLoad: true,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            autoplay: true,
+            autoplaySpeed: 2000
+        };
+
+        const url = process.env.REACT_APP_BACKEND_URL;
+
         return (
             <div>
-                <Query query={INFO_QUERY} id={null}>
-                    {({data: {info}}) => {
+                <Query query={PROJECTS_QUERY}>
+                    {({data: {projects}}) => {
                         return (
                             <div>
-                                {info.top}
+                                <section id="projects">
+                                    {projects.map((p, i) => {
+                                        return <Project data={p} url={url} settings={settings} key={i}></Project>
+                                    })}
+                                </section>
+
                             </div>
                         );
                     }}

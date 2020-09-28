@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
-const PROJECTS_QUERY = gql `
-  query Articles {
+const PROJECTS_QUERY = gql`
+ query Projects {
     projects {
       id
       project_title
@@ -17,6 +17,7 @@ const PROJECTS_QUERY = gql `
         previewUrl
       }
     }
+ }
 `;
 
 export default PROJECTS_QUERY;
