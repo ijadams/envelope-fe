@@ -4,11 +4,30 @@ import * as coreStyles from 'react-awesome-slider/src/core/styles.scss';
 import Background from "../Background";
 import Section from "../Section";
 import Lettering from "../Lettering";
-import Content from "../Content";
+import Startup from "../Startup";
+
+import {
+    withNavigationHandlers
+} from "react-awesome-slider/dist/navigation";
+
+const Slider = withNavigationHandlers(AwesomeSlider);
 
 export class Project extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            delay: 2500,
+            letteringActive: false
+        }
+    }
+
     componentDidMount() {
-        console.log(this.props)
+        setTimeout(() => {
+            this.setState({
+                letteringActive: true
+            })
+        }, this.state.delay)
     }
 
     componentWillUnmount() {
@@ -16,39 +35,33 @@ export class Project extends Component {
     }
 
     render() {
+        const delay = 2500;
         return (
             <div>
                 <div className="project">
-                    <AwesomeSlider
+                    <div className={`lettering--container ${this.state.letteringActive ? "active" : ""}`}>
+                        <Lettering
+                            title={this.props.data.project_title}
+                            text={this.props.data.project_description}
+                        />
+                    </div>
+                    <Slider
                         play={true}
+                        startupScreen={<Startup />}
+                        startupDelay={delay}
                         cancelOnInteraction={false} // should stop playing on user interaction
                         interval={6000}
                         animation="foldOutAnimation"
                         cssModule={[coreStyles]}
                     >
                         {this.props.data.project_images.map((p, i) => {
-                            return <React.Fragment>
+                            return <React.Fragment key={i+'--frag'}>
                                     <Section key={i+'--section'} backgroundColor="#ff6f5e">
                                             <Background key={i+'--bg'} src={this.props.url + p.url} />
-                                            <Content
-                                                key={i+'--content'}
-                                                main={
-                                                    <Lettering
-                                                        key={i+'-lettering'}
-                                                        title="PAGE-THREE"
-                                                        text={["This is a screen with preloaded background image."]}
-                                                    />
-                                                }
-                                                action={
-                                                    <div className="button" key={i+'--action'}>
-                                                        <button key={i+'-btn'}>click</button>
-                                                    </div>
-                                                }
-                                            />
                                 </Section>
                             </React.Fragment>
                         })}
-                    </AwesomeSlider>
+                    </Slider>
                 </div>
             </div>
         );

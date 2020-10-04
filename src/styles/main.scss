@@ -30,21 +30,34 @@ html, body {
 
 body {
   font-family: 'NeueMachina-Regular', sans-serif;
+
   button {
     border-radius: 3px !important;
     font-weight: 400 !important;
     letter-spacing: 1px !important;
   }
+
   p, h1, h2, h3 {
     font-family: 'NeueMachina-Regular', sans-serif;
   }
 }
 
-.loader {
-  position: fixed;
-  z-index: 1;
-  height: 100vh;
+.startup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
-  background: white;
-  transition: 0.5s ease-in-out;
+  height: 100vh;
+  background-color: #20232a;
+
+  img.background {
+    height: 100%;
+    width: 100%;
+    filter: none;
+    mix-blend-mode: inherit;
+  }
 }
+

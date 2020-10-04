@@ -156,11 +156,25 @@
   }
 }
 
+.lettering--container {
+  .lettering {
+    opacity: 0;
+    transition: 0.5s ease-in;
+    transition-delay: 0.3s;
+  }
+  &.active {
+    .lettering {
+      opacity: 1;
+    }
+  }
+}
+
 .lettering {
   color: #fff;
   font-family: monospace;
   text-align: center;
-  position: relative;
+  position: absolute;
+  z-index: 8;
 }
 
 .lettering h1 {
