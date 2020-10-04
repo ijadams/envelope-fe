@@ -19,10 +19,11 @@ export class Homepage extends Component {
             fade: true,
             speed: 500,
             lazyLoad: true,
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 1,
+            slidesToScroll: 1,
             autoplay: true,
-            autoplaySpeed: 2000
+            autoplaySpeed: 2000,
+            adaptiveHeight: true
         };
 
         const url = process.env.REACT_APP_BACKEND_URL;
