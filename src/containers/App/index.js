@@ -33,9 +33,7 @@ export class App extends Component {
     render() {
         return (
             <div className="App">
-                <div className={`${this.state.user == null ? "uk-hidden" : ""}`}>
-                    <Nav />
-                </div>
+                <Nav />
                 <main className={`${this.state.loaded ? "uk-hidden" : ""}`}>
                     <Switch>
                         <Route path="/" component={Homepage} exact />

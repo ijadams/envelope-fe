@@ -1,11 +1,14 @@
 import React, {Component} from "react";
 import {navService} from "../../services";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export class Nav extends Component {
     constructor() {
         super();
         this.state = {
             active: false,
+            visibile: false,
             scrolled: false
         }
     }
@@ -21,6 +24,10 @@ export class Nav extends Component {
         setTimeout(() => {
             window.addEventListener('scroll', this.handleScroll);
         }, 300);
+
+        setTimeout(() => {
+            this.setState({visibile: true});
+        }, 2500);
     }
 
     componentWillUnmount() {
@@ -45,83 +52,23 @@ export class Nav extends Component {
 
     render() {
         return (
-            <div>
-                {/*<Query query={NAV_QUERY} id={null}>*/}
-                {/*    {({data: {nav, categories}}) => {*/}
-                {/*        const desktopimageUrlImageUrl =*/}
-                {/*            process.env.NODE_ENV !== "development"*/}
-                {/*                ? nav.navlogo.url*/}
-                {/*                : process.env.REACT_APP_BACKEND_URL + nav.navlogo.url;*/}
-                {/*        const mobileImageUrl =*/}
-                {/*            process.env.NODE_ENV !== "development"*/}
-                {/*                ? nav.navlogomobile.url*/}
-                {/*                : process.env.REACT_APP_BACKEND_URL + nav.navlogomobile.url;*/}
-                {/*        ;*/}
-                {/*        return (*/}
-                {/*            <div>*/}
-                {/*                <nav className={`uk-navbar-container ${this.state.scrolled ? "active" : ''}`}*/}
-                {/*                     data-uk-navbar>*/}
-                {/*                    <div className="uk-navbar-left">*/}
-                {/*                        <ul className="uk-navbar-nav">*/}
-                {/*                            <li className="desktop">*/}
-                {/*                                <Link to="/"><img alt="Envelope Logo"*/}
-                {/*                                                  src={desktopimageUrlImageUrl}/></Link>*/}
-                {/*                            </li>*/}
-                {/*                            <li className="mobile">*/}
-                {/*                                <Link to="/"><img alt="Envelope Logo" src={mobileImageUrl}/></Link>*/}
-                {/*                            </li>*/}
-                {/*                        </ul>*/}
-                {/*                    </div>*/}
-
-                {/*                    <div className="uk-navbar-right desktop">*/}
-                {/*                        <ul className="uk-navbar-nav">*/}
-                {/*                            {categories.map((category, i) => {*/}
-                {/*                                return (*/}
-                {/*                                    <li key={category.id}>*/}
-                {/*                                        <Link*/}
-                {/*                                            to={`/category/${category.id}`}*/}
-                {/*                                            className="uk-link-reset"*/}
-                {/*                                        >*/}
-                {/*                                            {category.name}*/}
-                {/*                                        </Link>*/}
-                {/*                                    </li>*/}
-                {/*                                );*/}
-                {/*                            })}*/}
-                {/*                        </ul>*/}
-                {/*                    </div>*/}
-
-                {/*                    <div className="uk-navbar-right mobile">*/}
-                {/*                        <div className={`nav--button ${this.state.active ? "uk-hidden" : ""}`}*/}
-                {/*                             onClick={this.openNav}><span uk-icon="icon: menu; ratio: 2"></span>*/}
-                {/*                        </div>*/}
-                {/*                        <div className={`nav--button ${this.state.active ? "" : "uk-hidden"}`}*/}
-                {/*                             onClick={this.closeNav}><span*/}
-                {/*                            uk-icon="icon: close; ratio: 2"></span>*/}
-                {/*                        </div>*/}
-                {/*                    </div>*/}
-
-                {/*                    <div className={`nav--overlay ${this.state.active ? "active" : ""}`}>*/}
-                {/*                        <ul>*/}
-                {/*                            {categories.map((category, i) => {*/}
-                {/*                                return (*/}
-                {/*                                    <li key={category.id}>*/}
-                {/*                                        <Link*/}
-                {/*                                            to={`/category/${category.id}`}*/}
-                {/*                                            className="uk-link-reset"*/}
-                {/*                                        >*/}
-                {/*                                            {category.name}*/}
-                {/*                                        </Link>*/}
-                {/*                                    </li>*/}
-                {/*                                );*/}
-                {/*                            })}*/}
-                {/*                        </ul>*/}
-                {/*                    </div>*/}
-                {/*                </nav>*/}
-                {/*            </div>*/}
-                {/*        );*/}
-                {/*    }}*/}
-                {/*</Query>*/}
-            </div>
+            <nav className={`${this.state.visibile ? "visible" : ""}`}>
+                <div class="info">
+                    <div>
+                        <FontAwesomeIcon icon={faInfoCircle} />
+                    </div>
+                </div>
+                <div class="title">
+                    <div>
+                        <h1>Envelope</h1>
+                    </div>
+                </div>
+                <div class="arrow">
+                    <div>
+                        <img src="https://ijadams.s3.amazonaws.com/envelope/chevron-desktop.png" alt="chevron"/>
+                    </div>
+                </div>
+            </nav>
         );
     }
 }

@@ -9,12 +9,7 @@ const NAV_QUERY = gql`
             navlogomobile {
                 url
             }
-            signup_link
-            signup_text
-        }
-        categories {
-            id
-            name
+           
         }
     }
 `;

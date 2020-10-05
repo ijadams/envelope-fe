@@ -1,3 +1,48 @@
 nav {
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0 2.5%;
+  width: 95%;
+  z-index: 9;
+  height: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  transition: 1s ease-in;
+  transition-delay: 0.75s;
+  opacity: 0;
+  &.visible {
+    opacity: 1;
+  }
+
+  > div {
+    flex: 1 1 30%; /*grow | shrink | basis */
+    height: 100%;
+    &.title {
+      font-size: 1.8rem;
+    }
+    &.info {
+      font-size: 1.8rem;
+      > div {
+        justify-content: flex-start;
+      }
+    }
+    &.arrow {
+      > div {
+        justify-content: flex-end ;
+      }
+    }
+    > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      img {
+        height: 25px;
+        width: auto;
+      }
+    }
+  }
 }
