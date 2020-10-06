@@ -26,7 +26,7 @@ export class Homepage extends Component {
             adaptiveHeight: true
         };
 
-        const url = process.env.REACT_APP_BACKEND_URL;
+        const url = process.env.NODE_ENV !== "development" ? process.env.REACT_APP_BACKEND_URL : '';
 
         return (
             <div>
