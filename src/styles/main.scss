@@ -28,6 +28,11 @@ html, body {
   scroll-behavior: smooth;
 }
 
+html *,
+body * {
+  cursor: none !important;
+}
+
 body {
   font-family: 'NeueMachina-Regular', sans-serif;
 
@@ -61,3 +66,31 @@ body {
   }
 }
 
+.cursor {
+  width: 8rem;
+  height: 8rem;
+  background: url('https://ijadams.s3.amazonaws.com/envelope/Cursor-white.png') no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: all 150ms ease;
+  transition-property: background-color, opacity, transform, mix-blend-mode;
+  z-index: 9999;
+}
+
+.cursor--hidden {
+  opacity: 0;
+}
+
+.cursor--link-hovered {
+  transform: translate(-50%, -50%) scale(1.25);
+}
+
+.cursor--clicked {
+  background: url('https://ijadams.s3.amazonaws.com/envelope/Cursor.png') no-repeat;
+  //mix-blend-mode: difference;
+  //background-color: white;
+  //clip-path: polygon(79% 55%, 55% 55%, 76% 91%, 60% 100%, 39% 59%, 22% 84%, 21% 0);
+}

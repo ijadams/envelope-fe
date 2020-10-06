@@ -53,17 +53,17 @@ export class Nav extends Component {
     render() {
         return (
             <nav className={`${this.state.visibile ? "visible" : ""}`}>
-                <div class="info">
+                <div className="info">
                     <div>
                         <FontAwesomeIcon icon={faInfoCircle} />
                     </div>
                 </div>
-                <div class="title">
+                <div className="title">
                     <div>
                         <h1>Envelope</h1>
                     </div>
                 </div>
-                <div class="arrow">
+                <div className="arrow">
                     <div>
                         <img src="https://ijadams.s3.amazonaws.com/envelope/chevron-desktop.png" alt="chevron"/>
                     </div>

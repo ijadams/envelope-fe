@@ -136,10 +136,15 @@
   z-index: 8;
   bottom: 0;
   width: 100%;
+  text-align: center;
   .lettering {
+    padding: 2rem 5rem;
     opacity: 0;
     transition: 0.5s ease-in;
     transition-delay: 0.3s;
+    @media screen and (max-width: 768px) {
+      padding: 1rem;
+    }
   }
   &.active {
     .lettering {
@@ -152,6 +157,9 @@
   color: #fff;
   font-family: monospace;
   text-align: center;
+  .title {
+    text-transform: uppercase;
+  }
 }
 
 .lettering h1 {
