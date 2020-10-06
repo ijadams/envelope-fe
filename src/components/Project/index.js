@@ -56,7 +56,7 @@ export class Project extends Component {
                     >
                         {this.props.data.project_images.map((p, i) => {
                             return <React.Fragment key={i+'--frag'}>
-                                    <Section key={i+'--section'} backgroundColor="#ff6f5e">
+                                    <Section key={i+'--section'} backgroundColor="#000">
                                             <Background key={i+'--bg'} src={this.props.url + p.url} />
                                 </Section>
                             </React.Fragment>
