@@ -90,6 +90,9 @@ body {
 
 .cursor--clicked {
   background: url('https://ijadams.s3.amazonaws.com/envelope/Cursor.png') no-repeat;
+  transform: translate(-50%, -50%) scale(1.25);
+  opacity: 0.8;
+  
   //mix-blend-mode: difference;
   //background-color: white;
   //clip-path: polygon(79% 55%, 55% 55%, 76% 91%, 60% 100%, 39% 59%, 22% 84%, 21% 0);
