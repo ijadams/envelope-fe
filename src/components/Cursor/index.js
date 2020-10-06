@@ -29,12 +29,17 @@ export const Cursor = () => {
         document.removeEventListener("mouseup", onMouseUp);
     };
 
+    /* eslint-disable */
 
     useEffect(() => {
         addEventListeners();
         handleLinkHoverEvents();
         return () => removeEventListeners();
     }, []);
+
+    /* eslint-enable */
+
+
 
     if (typeof navigator !== "undefined" && isMobile()) return null;
 
