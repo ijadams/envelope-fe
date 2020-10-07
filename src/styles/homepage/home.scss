@@ -8,6 +8,10 @@
   .project {
     height: 100%;
     width: 100%;
+    display: none;
+    &:first-of-type {
+      display: block;
+    }
     > .awssld {
       height: 100%;
     }
