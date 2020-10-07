@@ -201,6 +201,10 @@
   }
 }
 
+.awssld__controls button {
+  z-index: 9;
+}
+
 .awssld__content > img {
   filter: grayscale(100%) opacity(35%);
   mix-blend-mode: multiply;

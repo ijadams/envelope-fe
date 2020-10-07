@@ -67,8 +67,10 @@ body {
 }
 
 .cursor {
-  width: 8rem;
-  height: 8rem;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  width: 5rem;
+  height: 5rem;
   background: url('https://ijadams.s3.amazonaws.com/envelope/Cursor-white.png') no-repeat;
   background-size: contain;
   background-position: center;
@@ -78,6 +80,23 @@ body {
   transition: all 150ms ease;
   transition-property: background-color, opacity, transform, mix-blend-mode;
   z-index: 9999;
+  &.active {
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    width: 5rem;
+    height: 5rem;
+    background: url('https://ijadams.s3.amazonaws.com/envelope/Cursor.png') no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: all 150ms ease;
+    transition-property: background-color, opacity, transform, mix-blend-mode;
+    mix-blend-mode: multiply;
+    background-color: white;
+    z-index: 9999;
+  }
 }
 
 .cursor--hidden {
@@ -85,14 +104,14 @@ body {
 }
 
 .cursor--link-hovered {
-  transform: translate(-50%, -50%) scale(1.25);
+  //transform: translate(-50%, -50%) scale(1.25);
+  opacity: 0.8;
 }
 
 .cursor--clicked {
-  background: url('https://ijadams.s3.amazonaws.com/envelope/Cursor.png') no-repeat;
-  transform: translate(-50%, -50%) scale(1.25);
+  //background: url('https://ijadams.s3.amazonaws.com/envelope/Cursor.png') no-repeat;
+  //transform: translate(-50%, -50%) scale(1.25);
   opacity: 0.8;
-
   //mix-blend-mode: difference;
   //background-color: white;
   //clip-path: polygon(79% 55%, 55% 55%, 76% 91%, 60% 100%, 39% 59%, 22% 84%, 21% 0);

@@ -47,6 +47,8 @@ export class Project extends Component {
                     </div>
                     <Slider
                         play={true}
+                        infinite={true}
+                        mobileTouch={true}
                         startupScreen={<Startup />}
                         startupDelay={delay}
                         cancelOnInteraction={false} // should stop playing on user interaction

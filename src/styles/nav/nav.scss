@@ -25,14 +25,26 @@ nav {
       font-size: 4rem;
       text-transform: uppercase;
       margin-bottom: -5px;
+      @media screen and (max-width: 1080px) {
+        font-size: 3rem;
+      }
+      @media screen and (max-width: 768px) {
+        font-size: 2rem;
+      }
     }
     &.info {
       font-size: 1.8rem;
+      &:hover {
+        opacity: 0.5;
+      }
       > div {
         justify-content: flex-start;
       }
     }
     &.arrow {
+      &:hover {
+        opacity: 0.5;
+      }
       > div {
         justify-content: flex-end ;
       }
@@ -46,6 +58,26 @@ nav {
         height: 25px;
         width: auto;
       }
+    }
+  }
+
+  .nav--overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: white;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: 0.3s ease-in;
+    color: black;
+    &.active {
+      opacity: 1;
+      z-index: 999999;
+    }
+    .close--container {
+      font-size: 3rem;
     }
   }
 }

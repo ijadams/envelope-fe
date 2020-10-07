@@ -12,8 +12,7 @@ export class App extends Component {
     constructor() {
         super();
         this.state = {
-            loaded: false,
-            user: null
+            navActive: false
         }
     }
 
@@ -21,7 +20,7 @@ export class App extends Component {
         // subscribe to home component messages
         this.navsub = navService.getNav().subscribe(data => {
             this.setState({
-                loaded: data.active
+                navActive: data.active
             })
         });
     }
@@ -34,13 +33,13 @@ export class App extends Component {
         return (
             <div className="App">
                 <Nav/>
-                <main className={`${this.state.loaded ? "uk-hidden" : ""}`}>
+                <main>
                     <Switch>
                         <Route path="/" component={Homepage} exact/>
                         <Route component={NotFoundPage}/>
                     </Switch>
                 </main>
-                <Cursor/>
+                <Cursor active={this.state.navActive}/>
                 <Footer/>
             </div>
         );

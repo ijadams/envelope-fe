@@ -13,19 +13,6 @@ export class Homepage extends Component {
     }
 
     render() {
-        const settings = {
-            dots: true,
-            infinite: true,
-            fade: true,
-            speed: 500,
-            lazyLoad: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 2000,
-            adaptiveHeight: true
-        };
-
         const url = process.env.NODE_ENV !== "development" ? '' : process.env.REACT_APP_BACKEND_URL;
 
         return (
@@ -36,7 +23,7 @@ export class Homepage extends Component {
                             <div>
                                 <section id="projects">
                                     {projects.map((p, i) => {
-                                        return <Project data={p} url={url} settings={settings} key={i}></Project>
+                                        return <Project data={p} url={url} key={i}></Project>
                                     })}
                                 </section>
 

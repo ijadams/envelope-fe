@@ -1,7 +1,9 @@
 import React, {Component} from "react";
 import {navService} from "../../services";
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {InfoOverlay} from "../InfoOverlay";
+import {faInfoCircle} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {ArrowOverlay} from "../ArrowOverlay";
 
 export class Nav extends Component {
     constructor() {
@@ -17,13 +19,15 @@ export class Nav extends Component {
         // subscribe to home component messages
         this.subscription = navService.getNav().subscribe(data => {
             this.setState({
-                active: data.active
+                active: data.active,
             })
         });
 
-        setTimeout(() => {
-            window.addEventListener('scroll', this.handleScroll);
-        }, 300);
+        this.subscription = navService.getArrow().subscribe(data => {
+            this.setState({
+                arrowActive: data.active,
+            })
+        });
 
         setTimeout(() => {
             this.setState({visibile: true});
@@ -44,6 +48,14 @@ export class Nav extends Component {
         navService.toggleNav(false);
     };
 
+    openArrow = () => {
+        navService.toggleArrow(true);
+    };
+
+    closeArrow = () => {
+        navService.toggleArrow(false);
+    };
+
     handleScroll = (event) => {
         this.setState({
             scrolled: window.scrollY !== 0
@@ -54,8 +66,8 @@ export class Nav extends Component {
         return (
             <nav className={`${this.state.visibile ? "visible" : ""}`}>
                 <div className="info">
-                    <div>
-                        <FontAwesomeIcon icon={faInfoCircle} />
+                    <div onClick={this.openNav}>
+                        <FontAwesomeIcon icon={faInfoCircle}/>
                     </div>
                 </div>
                 <div className="title">
@@ -64,10 +76,14 @@ export class Nav extends Component {
                     </div>
                 </div>
                 <div className="arrow">
-                    <div>
+                    <div onClick={this.openArrow}>
                         <img src="https://ijadams.s3.amazonaws.com/envelope/chevron-desktop.png" alt="chevron"/>
                     </div>
                 </div>
+
+                <InfoOverlay active={this.state.active} />
+                <ArrowOverlay active={this.state.arrowActive} />
+
             </nav>
         );
     }

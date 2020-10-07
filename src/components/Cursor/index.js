@@ -6,7 +6,7 @@ export const isMobile = () => {
     return /Android|Mobi/i.test(ua);
 };
 
-export const Cursor = () => {
+export const Cursor = (props) => {
 
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [clicked, setClicked] = useState(false);
@@ -74,7 +74,8 @@ export const Cursor = () => {
     const cursorClasses = classNames("cursor", {
         "cursor--clicked": clicked,
         "cursor--hidden": hidden,
-        "cursor--link-hovered": linkHovered
+        "cursor--link-hovered": linkHovered,
+        "active": props.active
     });
 
     return (
