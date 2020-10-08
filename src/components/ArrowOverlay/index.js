@@ -6,7 +6,7 @@ import {navService} from "../../services";
 export const ArrowOverlay = (props) => {
 
     function closeNav() {
-        navService.toggleNav(false);
+        navService.toggleArrow(false);
     }
 
     return (

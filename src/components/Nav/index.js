@@ -8,33 +8,36 @@ export class Nav extends Component {
         super();
         this.state = {
             active: false,
-            visibile: false,
+            arrowActive: false,
+            visible: false,
             scrolled: false
         }
     }
 
     componentDidMount() {
         // subscribe to home component messages
-        this.subscription = navService.getNav().subscribe(data => {
+        this.subscriptionNav = navService.getNav().subscribe(data => {
             this.setState({
                 active: data.active,
             })
         });
 
-        this.subscription = navService.getArrow().subscribe(data => {
+        this.subscriptionArrow = navService.getArrow().subscribe(data => {
             this.setState({
-                arrowActive: data.active,
+                arrowActive: data.arrowActive,
             })
         });
 
+
         setTimeout(() => {
-            this.setState({visibile: true});
+            this.setState({visible: true});
         }, 2500);
     }
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
-        this.subscription.unsubscribe();
+        this.subscriptionArrow.unsubscribe();
+        this.subscriptionNav.unsubscribe();
     }
 
 
@@ -62,7 +65,7 @@ export class Nav extends Component {
 
     render() {
         return (
-            <nav className={`${this.state.visibile ? "visible" : ""}`}>
+            <nav className={`${this.state.visible ? "visible" : ""}`}>
                 <div className="info">
                     <div onClick={this.openNav}>
                         <img src="https://ijadams.s3.amazonaws.com/envelope/info-white.png" alt="chevron"/>

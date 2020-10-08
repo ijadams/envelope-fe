@@ -22,6 +22,7 @@ export class Project extends Component {
             delay: 2500,
             letteringActive: false,
             navActive: false,
+            arrowActive: false,
         }
     }
 
@@ -30,6 +31,11 @@ export class Project extends Component {
         this.navsub = navService.getNav().subscribe(data => {
             this.setState({
                 navActive: data.active
+            })
+        });
+        this.arrowsub = navService.getArrow().subscribe(data => {
+            this.setState({
+                arrowActive: data.arrowActive
             })
         });
         setTimeout(() => {
@@ -41,13 +47,14 @@ export class Project extends Component {
 
     componentWillUnmount() {
         this.navsub.unsubscribe();
+        this.arrowsub.unsubscribe();
     }
 
     render() {
         const delay = 2500;
         return (
             <div>
-                <div className={`project ${this.state.navActive ? "active" : ""}`}>
+                <div className={`project ${this.state.navActive || this.state.arrowActive ? "active" : ""}`}>
                     <div className={`lettering--container ${this.state.letteringActive ? "active" : ""}`}>
                         <Lettering
                             title={this.props.data.project_title}

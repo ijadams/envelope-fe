@@ -12,7 +12,8 @@ export class App extends Component {
     constructor() {
         super();
         this.state = {
-            navActive: false
+            navActive: false,
+            arrowActive: false,
         }
     }
 
@@ -21,6 +22,11 @@ export class App extends Component {
         this.navsub = navService.getNav().subscribe(data => {
             this.setState({
                 navActive: data.active
+            })
+        });
+        this.arrowsub = navService.getArrow().subscribe(data => {
+            this.setState({
+                arrowActive: data.arrowActive
             })
         });
     }
@@ -39,7 +45,7 @@ export class App extends Component {
                         <Route component={NotFoundPage}/>
                     </Switch>
                 </main>
-                <Cursor active={this.state.navActive}/>
+                <Cursor active={this.state.navActive || this.state.arrowActive}/>
                 <Footer/>
             </div>
         );
