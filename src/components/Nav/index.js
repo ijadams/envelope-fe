@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import {navService} from "../../services";
 import {InfoOverlay} from "../InfoOverlay";
-import {faInfoCircle} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {ArrowOverlay} from "../ArrowOverlay";
 
 export class Nav extends Component {
@@ -67,7 +65,7 @@ export class Nav extends Component {
             <nav className={`${this.state.visibile ? "visible" : ""}`}>
                 <div className="info">
                     <div onClick={this.openNav}>
-                        <FontAwesomeIcon icon={faInfoCircle}/>
+                        <img src="https://ijadams.s3.amazonaws.com/envelope/info-white.png" alt="chevron"/>
                     </div>
                 </div>
                 <div className="title">
@@ -81,9 +79,8 @@ export class Nav extends Component {
                     </div>
                 </div>
 
-                <InfoOverlay active={this.state.active} />
-                <ArrowOverlay active={this.state.arrowActive} />
-
+                <InfoOverlay active={this.state.active}/>
+                <ArrowOverlay active={this.state.arrowActive}/>
             </nav>
         );
     }
