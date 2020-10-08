@@ -9,20 +9,29 @@ import Startup from "../Startup";
 import {
     withNavigationHandlers
 } from "react-awesome-slider/dist/navigation";
+import {navService} from "../../services";
 
 const Slider = withNavigationHandlers(AwesomeSlider);
 
 export class Project extends Component {
 
+
     constructor() {
         super();
         this.state = {
             delay: 2500,
-            letteringActive: false
+            letteringActive: false,
+            navActive: false,
         }
     }
 
     componentDidMount() {
+        // subscribe to home component messages
+        this.navsub = navService.getNav().subscribe(data => {
+            this.setState({
+                navActive: data.active
+            })
+        });
         setTimeout(() => {
             this.setState({
                 letteringActive: true
@@ -31,14 +40,14 @@ export class Project extends Component {
     }
 
     componentWillUnmount() {
-
+        this.navsub.unsubscribe();
     }
 
     render() {
         const delay = 2500;
         return (
             <div>
-                <div className="project">
+                <div className={`project ${this.state.navActive ? "active" : ""}`}>
                     <div className={`lettering--container ${this.state.letteringActive ? "active" : ""}`}>
                         <Lettering
                             title={this.props.data.project_title}
