@@ -4,7 +4,7 @@ nav {
   left: 0;
   padding: 0 2.5%;
   width: 95%;
-  z-index: 9;
+  z-index: 20;
   height: 5rem;
   display: flex;
   flex-wrap: wrap;
@@ -24,7 +24,12 @@ nav {
     &.title {
       font-size: 4rem;
       text-transform: uppercase;
-      margin-bottom: -5px;
+      margin-bottom: -10px;
+      opacity: 1;
+      transition: 0.15s ease-in-out;
+      &.hidden {
+        opacity: 0;
+      }
       @media screen and (max-width: 1080px) {
         font-size: 3rem;
       }
@@ -38,6 +43,7 @@ nav {
         opacity: 0.5;
       }
       > div {
+        padding-left: 1rem;
         justify-content: flex-start;
       }
     }
@@ -46,6 +52,7 @@ nav {
         opacity: 0.5;
       }
       > div {
+        padding-right: 1rem;
         justify-content: flex-end ;
       }
     }
@@ -60,28 +67,37 @@ nav {
       }
     }
   }
+}
 
-  .nav--overlay {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    background: white;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: 0.3s ease-in;
-    color: black;
-    &.active {
-      opacity: 1;
-      z-index: 999999;
+
+.nav--overlay {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: transparent;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: 0.3s ease-in;
+  color: black;
+  background: transparent;
+  &.active {
+    opacity: 0.5;
+    z-index: 10;
+    .title {
+      color: black;
+      opacity: 0;
     }
-    .close--container {
-      font-size: 3rem;
-      position: absolute;
-      left: 1rem;
-      top: 1rem;
-      height: auto;
-    }
+  }
+  .close--container {
+    font-size: 3rem;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    height: auto;
   }
 }

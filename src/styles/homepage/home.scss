@@ -27,6 +27,10 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  transition: ease-in 0.3s;
+  &.active {
+    filter: blur(15px);
+  }
 }
 
 .section {
@@ -140,6 +144,8 @@
   bottom: 0;
   width: 100%;
   text-align: center;
+  opacity: 1;
+  transition: 0.15s ease-in-out;
   .lettering {
     padding: 2rem 5rem;
     opacity: 0;
@@ -200,7 +206,21 @@
   }
 }
 
+.home--container {
+  .awssld__controls button {
+    visibility: hidden;
+  }
+  &.active {
+    .awssld__controls button {
+      visibility: visible;
+    }
+  }
+}
+
 .project.active {
+  .lettering--container {
+    opacity: 0;
+  }
   .awssld__controls button {
     z-index: 8;
   }

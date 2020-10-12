@@ -42,49 +42,47 @@ export class Nav extends Component {
 
 
     openNav = () => {
-        navService.toggleNav(true);
-    };
-
-    closeNav = () => {
-        navService.toggleNav(false);
+        navService.toggleNav(!this.state.active);
     };
 
     openArrow = () => {
-        navService.toggleArrow(true);
-    };
-
-    closeArrow = () => {
-        navService.toggleArrow(false);
+        navService.toggleArrow(!this.state.arrowActive);
     };
 
     handleScroll = (event) => {
         this.setState({
             scrolled: window.scrollY !== 0
         });
-    }
+    };
 
     render() {
+        const w = 'https://ijadams.s3.amazonaws.com/envelope/info-white.png';
+        const b = 'https://ijadams.s3.amazonaws.com/envelope/info-black.png';
+        const cb = 'https://ijadams.s3.amazonaws.com/envelope/chevron-desktop-black.png';
+        const cw = 'https://ijadams.s3.amazonaws.com/envelope/chevron-desktop.png';
+        const overlayOpen = this.state.active || this.state.arrowActive;
         return (
-            <nav className={`${this.state.visible ? "visible" : ""}`}>
-                <div className="info">
-                    <div onClick={this.openNav}>
-                        <img src="https://ijadams.s3.amazonaws.com/envelope/info-white.png" alt="chevron"/>
+            <div>
+                <nav className={`${this.state.visible ? "visible" : ""}`}>
+                    <div className="info">
+                        <div onClick={this.openNav}>
+                            <img src={overlayOpen ? b : w} alt="chevron"/>
+                        </div>
                     </div>
-                </div>
-                <div className="title">
-                    <div>
-                        <h1>Envelope</h1>
+                    <div className={`title ${overlayOpen ? "hidden" : ""}`}>
+                        <div>
+                            <h1>Envelope</h1>
+                        </div>
                     </div>
-                </div>
-                <div className="arrow">
-                    <div onClick={this.openArrow}>
-                        <img src="https://ijadams.s3.amazonaws.com/envelope/chevron-desktop.png" alt="chevron"/>
+                    <div className="arrow">
+                        <div onClick={this.openArrow}>
+                            <img src={overlayOpen ? cb : cw} alt="chevron"/>
+                        </div>
                     </div>
-                </div>
-
+                </nav>
                 <InfoOverlay active={this.state.active}/>
                 <ArrowOverlay active={this.state.arrowActive}/>
-            </nav>
+            </div>
         );
     }
 }

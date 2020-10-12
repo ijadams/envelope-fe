@@ -20,7 +20,7 @@ export class Project extends Component {
         super();
         this.state = {
             delay: 2500,
-            letteringActive: false,
+            startupLoaded: false,
             navActive: false,
             arrowActive: false,
         }
@@ -40,7 +40,7 @@ export class Project extends Component {
         });
         setTimeout(() => {
             this.setState({
-                letteringActive: true
+                startupLoaded: true
             })
         }, this.state.delay)
     }
@@ -51,11 +51,11 @@ export class Project extends Component {
     }
 
     render() {
-        const delay = 2500;
+        const delay = this.state.delay;
         return (
-            <div>
+            <div className={`home--container ${this.state.startupLoaded ? "active" : ""}`}>
                 <div className={`project ${this.state.navActive || this.state.arrowActive ? "active" : ""}`}>
-                    <div className={`lettering--container ${this.state.letteringActive ? "active" : ""}`}>
+                    <div className={`lettering--container ${this.state.startupLoaded ? "active" : ""}`}>
                         <Lettering
                             title={this.props.data.project_title}
                             text={this.props.data.project_description}
@@ -67,18 +67,17 @@ export class Project extends Component {
                         mobileTouch={true}
                         startupScreen={<Startup />}
                         startupDelay={delay}
-                        buttonContentRight={<div className="right--panel"></div>}
+                        buttonContentRight={<div className="right--panel "></div>}
                         buttonContentLeft={<div className="left--panel"></div>}
                         organicArrows={false}
                         cancelOnInteraction={false} // should stop playing on user interaction
-                        interval={6000}
-                        animation="foldOutAnimation"
+                        interval={delay}
                         cssModule={[coreStyles]}
                     >
                         {this.props.data.project_images.map((p, i) => {
                             return <React.Fragment key={i+'--frag'}>
                                     <Section key={i+'--section'} backgroundColor="#000">
-                                            <Background key={i+'--bg'} src={this.props.url + p.url} />
+                                            <Background key={i+'--bg'} src={this.props.url + p.url} blurred={this.state.navActive || this.state.arrowActive} />
                                 </Section>
                             </React.Fragment>
                         })}

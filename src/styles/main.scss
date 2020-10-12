@@ -94,7 +94,7 @@ body {
     transition: all 150ms ease;
     transition-property: background-color, opacity, transform, mix-blend-mode;
     mix-blend-mode: multiply;
-    background-color: white;
+    background-color: transparent;
     z-index: 9999;
   }
 }
