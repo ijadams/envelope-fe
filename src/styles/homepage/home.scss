@@ -29,7 +29,7 @@
   z-index: 0;
   transition: ease-in 0.3s;
   &.active {
-    filter: blur(15px);
+    filter: blur(15px) brightness(0.5);
   }
 }
 

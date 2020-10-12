@@ -43,10 +43,12 @@ export class Nav extends Component {
 
     openNav = () => {
         navService.toggleNav(!this.state.active);
+        navService.toggleArrow(false);
     };
 
     openArrow = () => {
         navService.toggleArrow(!this.state.arrowActive);
+        navService.toggleNav(false);
     };
 
     handleScroll = (event) => {

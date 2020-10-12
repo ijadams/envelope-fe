@@ -62,8 +62,11 @@ nav {
       align-items: center;
       height: 100%;
       img {
-        height: 25px;
+        height: 45px;
         width: auto;
+        @media screen and (max-width: 900px) {
+          height: 25px;
+        }
       }
     }
   }
@@ -85,6 +88,51 @@ nav {
   transition: 0.3s ease-in;
   color: black;
   background: transparent;
+  .info--container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 75%;
+    font-size: 4rem;
+    color: white;
+    h1, h2, h3 {
+      display: inline;
+    }
+    h1 {
+      margin-right: 10px;
+    }
+    h2 {
+      margin-right: 10px  ;
+    }
+    h1, h3 {
+      font-family: 'NeueMachina-Regular';
+    }
+    h2 {
+      font-family: 'Romie-Regular', sans-serif;
+      font-size: 2.5rem;
+    }
+    h3 {
+      font-size: 2rem;
+    }
+    .top {
+      padding-top: 3rem;
+    }
+    .bottom {
+      padding-bottom: 3rem;
+      font-family: 'NeueMachina-Regular';
+      text-transform: uppercase;
+      font-size: 1.8vw;
+      p {
+        display: inline-block;
+        margin: auto 3px;
+      }
+      a {
+        color: white;
+      }
+    }
+  }
   &.active {
     opacity: 0.5;
     z-index: 10;
