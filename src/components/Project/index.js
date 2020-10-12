@@ -67,6 +67,9 @@ export class Project extends Component {
                         mobileTouch={true}
                         startupScreen={<Startup />}
                         startupDelay={delay}
+                        buttonContentRight={<div className="right--panel"></div>}
+                        buttonContentLeft={<div className="left--panel"></div>}
+                        organicArrows={false}
                         cancelOnInteraction={false} // should stop playing on user interaction
                         interval={6000}
                         animation="foldOutAnimation"

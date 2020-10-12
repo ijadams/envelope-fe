@@ -60,7 +60,6 @@
 }
 
 .content__action {
-  // background-color: red;
   margin-bottom: 56px;
   display: flex;
   align-items: flex-start;
@@ -218,4 +217,28 @@
   font-family: monospace;
   text-align: center;
   color: #fff;
+}
+
+.awssld__controls button {
+  height: 100vh;
+  top: 0;
+}
+
+.right--panel, .left--panel {
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transition: 0.5s ease-in;
+  opacity: 0;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.left--panel {
+  background: linear-gradient(to right, rgba(255,255,255,0.3), transparent);
+}
+.right--panel {
+  background: linear-gradient(to left, rgba(255,255,255,0.3), transparent);
 }
