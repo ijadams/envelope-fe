@@ -60,7 +60,8 @@ export class Nav extends Component {
     render() {
         const w = 'https://ijadams.s3.amazonaws.com/envelope/info-white.png';
         const b = 'https://ijadams.s3.amazonaws.com/envelope/info-black.png';
-        const cb = 'https://ijadams.s3.amazonaws.com/envelope/chevron-desktop-black.png';
+        // const cb = 'https://ijadams.s3.amazonaws.com/envelope/chevron-desktop-black.png';
+        const cb = 'https://ijadams.s3.amazonaws.com/envelope/x-white.png';
         const cw = 'https://ijadams.s3.amazonaws.com/envelope/chevron-desktop.png';
         const overlayOpen = this.state.active || this.state.arrowActive;
         return (
@@ -68,7 +69,7 @@ export class Nav extends Component {
                 <nav className={`${this.state.visible ? "visible" : ""}`}>
                     <div className="info">
                         <div onClick={this.openNav}>
-                            <img src={overlayOpen ? b : w} alt="chevron"/>
+                            <img src={this.state.active ? b : w} alt="chevron"/>
                         </div>
                     </div>
                     <div className={`title ${overlayOpen ? "hidden" : ""}`}>
@@ -78,7 +79,7 @@ export class Nav extends Component {
                     </div>
                     <div className="arrow">
                         <div onClick={this.openArrow}>
-                            <img src={overlayOpen ? cb : cw} alt="chevron"/>
+                            <img src={this.state.arrowActive ? cb : cw} alt="chevron"/>
                         </div>
                     </div>
                 </nav>

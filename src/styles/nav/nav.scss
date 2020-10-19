@@ -13,6 +13,7 @@ nav {
   transition: 1s ease-in;
   transition-delay: 0.75s;
   opacity: 0;
+
   &.visible {
     opacity: 1;
   }
@@ -21,15 +22,18 @@ nav {
     flex: 1 1 30%; /*grow | shrink | basis */
     height: 100%;
     color: white;
+
     &.title {
       font-size: 4rem;
       text-transform: uppercase;
       margin-bottom: -10px;
       opacity: 1;
       transition: 0.15s ease-in-out;
+
       &.hidden {
         opacity: 0;
       }
+
       @media screen and (max-width: 1080px) {
         font-size: 3rem;
       }
@@ -37,30 +41,37 @@ nav {
         font-size: 2rem;
       }
     }
+
     &.info {
       font-size: 1.8rem;
+
       &:hover {
         opacity: 0.5;
       }
+
       > div {
         padding-left: 1rem;
         justify-content: flex-start;
       }
     }
+
     &.arrow {
       &:hover {
         opacity: 0.5;
       }
+
       > div {
         padding-right: 1rem;
-        justify-content: flex-end ;
+        justify-content: flex-end;
       }
     }
+
     > div {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100%;
+
       img {
         height: 45px;
         width: auto;
@@ -88,6 +99,40 @@ nav {
   transition: 0.3s ease-in;
   color: black;
   background: transparent;
+
+  .project--nav {
+    width: 100%;
+     li {
+       border-top: 1px solid rgba(255,255,255,0.5);
+       border-bottom: 1px solid rgba(255,255,255,0.5);
+       font-family: 'Romie-Regular' !important;
+       color: white;
+       text-transform: uppercase;
+       text-align: center;
+       height: 20vh;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       .project--title {
+         font-size: 3rem;
+         padding-bottom: 1rem;
+         .index {
+           display: inline;
+           position: absolute;
+           margin-top: -0.8rem;
+           margin-left: 0.8rem;
+           font-size: 0.8rem;
+         }
+       }
+       .tags {
+         font-size: 1.4rem;
+       }
+       span {
+         display: block;
+       }
+     }
+  }
+
   .info--container {
     display: flex;
     justify-content: space-between;
@@ -97,54 +142,101 @@ nav {
     width: 75%;
     font-size: 4rem;
     color: white;
+
     h1, h2, h3 {
       display: inline;
     }
+
     h1 {
       margin-right: 10px;
     }
+
     h2 {
-      margin-right: 10px  ;
+      margin-right: 10px;
     }
+
     h1, h3 {
       font-family: 'NeueMachina-Regular';
     }
+
     h2 {
       font-family: 'Romie-Regular', sans-serif;
       font-size: 2.5rem;
     }
+
     h3 {
       font-size: 2rem;
     }
+
+    @media screen and (max-width: 768px) {
+      .top {
+        padding-top: 6rem !important;
+
+        h1, h2, h3 {
+          display: block;
+          line-height: 110%;
+        }
+
+        h1 {
+          font-size: 3rem;
+        }
+      }
+      .bottom {
+        p {
+          display: block;
+          font-size: 1.4rem;
+        }
+      }
+    }
+
     .top {
       padding-top: 3rem;
     }
+
     .bottom {
       padding-bottom: 3rem;
       font-family: 'NeueMachina-Regular';
       text-transform: uppercase;
       font-size: 1.8vw;
+
       p {
         display: inline-block;
         margin: auto 3px;
       }
+
       a {
         color: white;
         text-decoration: none;
+
         &:hover {
           text-decoration: underline;
         }
       }
     }
   }
+
   &.active {
-    opacity: 0.5;
+    opacity: 1;
     z-index: 10;
+    @media screen and (max-width: 768px) {
+      background: white;
+      opacity: 1;
+      .info--container {
+        color: black;
+
+        a {
+          color: black;
+          text-decoration: underline;
+        }
+      }
+    }
+
     .title {
       color: black;
       opacity: 0;
     }
   }
+
   .close--container {
     font-size: 3rem;
     position: absolute;
