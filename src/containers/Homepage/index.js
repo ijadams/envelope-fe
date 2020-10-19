@@ -22,9 +22,10 @@ export class Homepage extends Component {
                         return (
                             <div>
                                 <section id="projects">
-                                    {projects.map((p, i) => {
-                                        return <Project data={p} url={url} key={i}></Project>
-                                    })}
+                                    {/*{projects.map((p, i) => {*/}
+                                    {/*    return <Project data={p} url={url} key={i}></Project>*/}
+                                    {/*})}*/}
+                                    <Project data={projects[0]} url={url} key={0}></Project>
                                 </section>
 
                             </div>
