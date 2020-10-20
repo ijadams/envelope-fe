@@ -27,6 +27,8 @@ export class Project extends Component {
     }
 
     componentDidMount() {
+        navService.setDarkText(this.props.data.dark_text);
+
         // subscribe to home component messages
         this.navsub = navService.getNav().subscribe(data => {
             this.setState({
@@ -52,8 +54,9 @@ export class Project extends Component {
 
     render() {
         const delay = this.state.delay;
+        const darkText = this.props.data.dark_text;
         return (
-            <div className={`home--container ${this.state.startupLoaded ? "active" : ""}`}>
+            <div className={`home--container ${this.state.startupLoaded ? "active" : ""} ${darkText ? "dark--text" : ""}`}>
                 <div className={`project ${this.state.navActive || this.state.arrowActive ? "active" : ""}`}>
                     <div className={`lettering--container ${this.state.startupLoaded ? "active" : ""}`}>
                         <Lettering

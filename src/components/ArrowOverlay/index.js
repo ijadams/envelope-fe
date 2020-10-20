@@ -8,7 +8,6 @@ export const ArrowOverlay = (props) => {
         <div>
             <Query query={PROJECTS_QUERY}>
                 {({data: {projects}}) => {
-                    console.log(projects)
                     return (
                         <div>
                             <div className={`nav--overlay ${props.active ? "active" : ""}`}>

@@ -10,7 +10,8 @@ export class Nav extends Component {
             active: false,
             arrowActive: false,
             visible: false,
-            scrolled: false
+            scrolled: false,
+            darkText: false
         }
     }
 
@@ -28,6 +29,12 @@ export class Nav extends Component {
             })
         });
 
+        this.subscriptionDarkText = navService.getDarkText().subscribe(data => {
+            this.setState({
+                darkText: data.darkText,
+            })
+        });
+
 
         setTimeout(() => {
             this.setState({visible: true});
@@ -38,6 +45,7 @@ export class Nav extends Component {
         window.removeEventListener('scroll', this.handleScroll);
         this.subscriptionArrow.unsubscribe();
         this.subscriptionNav.unsubscribe();
+        this.subscriptionDarkText.unsubscribe();
     }
 
 
@@ -60,16 +68,18 @@ export class Nav extends Component {
     render() {
         const w = 'https://ijadams.s3.amazonaws.com/envelope/info-white.png';
         const b = 'https://ijadams.s3.amazonaws.com/envelope/info-black.png';
-        // const cb = 'https://ijadams.s3.amazonaws.com/envelope/chevron-desktop-black.png';
+        const xbc = 'https://ijadams.s3.amazonaws.com/envelope/chevron-desktop-black.png';
         const cb = 'https://ijadams.s3.amazonaws.com/envelope/x-white.png';
+        const xb = 'https://ijadams.s3.amazonaws.com/envelope/x-black.png';
         const cw = 'https://ijadams.s3.amazonaws.com/envelope/chevron-desktop.png';
         const overlayOpen = this.state.active || this.state.arrowActive;
         return (
             <div>
-                <nav className={`${this.state.visible ? "visible" : ""}`}>
+                <nav className={`${this.state.visible ? "visible" : ""} ${this.state.darkText ? "dark--text" : ""}`}>
                     <div className="info">
                         <div onClick={this.openNav}>
-                            <img src={this.state.active ? b : w} alt="chevron"/>
+                            {this.state.darkText && <img src={this.state.active ? w : b} alt="chevron"/>}
+                            {!this.state.darkText && <img src={this.state.active ? b : w} alt="chevron"/>}
                         </div>
                     </div>
                     <div className={`title ${overlayOpen ? "hidden" : ""}`}>
@@ -79,7 +89,8 @@ export class Nav extends Component {
                     </div>
                     <div className="arrow">
                         <div onClick={this.openArrow}>
-                            <img src={this.state.arrowActive ? cb : cw} alt="chevron"/>
+                            {this.state.darkText && <img src={this.state.arrowActive ? xb : xbc} alt="chevron"/>}
+                            {!this.state.darkText && <img src={this.state.arrowActive ? cb : cw} alt="chevron"/>}
                         </div>
                     </div>
                 </nav>

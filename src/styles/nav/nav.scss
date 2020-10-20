@@ -14,6 +14,10 @@ nav {
   transition-delay: 0.75s;
   opacity: 0;
 
+  &.dark--text {
+
+  }
+
   &.visible {
     opacity: 1;
   }
@@ -149,10 +153,12 @@ nav {
 
     h1 {
       margin-right: 10px;
+      font-size: 3rem;
     }
 
     h2 {
       margin-right: 10px;
+      font-size: 3rem;
     }
 
     h1, h3 {
@@ -165,7 +171,9 @@ nav {
     }
 
     h3 {
-      font-size: 2rem;
+      font-size: 1rem;
+      font-family: 'NeueMachina-Regular' !important;
+      position: absolute;
     }
 
     @media screen and (max-width: 768px) {
