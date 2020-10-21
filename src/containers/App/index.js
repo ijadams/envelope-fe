@@ -14,6 +14,7 @@ export class App extends Component {
         this.state = {
             navActive: false,
             arrowActive: false,
+            darkText: false,
         }
     }
 
@@ -29,10 +30,17 @@ export class App extends Component {
                 arrowActive: data.arrowActive
             })
         });
+        this.subscriptionDarkText = navService.getDarkText().subscribe(data => {
+            this.setState({
+                darkText: data.darkText,
+            })
+        });
     }
 
     componentWillUnmount() {
         this.navsub.unsubscribe();
+        this.arrowsub.unsubscribe();
+        this.subscriptionDarkText.unsubscribe();
     }
 
     render() {
@@ -45,7 +53,7 @@ export class App extends Component {
                         <Route component={NotFoundPage}/>
                     </Switch>
                 </main>
-                <Cursor active={this.state.navActive || this.state.arrowActive}/>
+                <Cursor active={this.state.navActive || this.state.arrowActive} darkText={this.state.darkText}/>
                 <Footer/>
             </div>
         );

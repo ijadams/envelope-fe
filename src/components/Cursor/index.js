@@ -8,6 +8,7 @@ export const isMobile = () => {
 
 export const Cursor = (props) => {
 
+
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [clicked, setClicked] = useState(false);
     const [linkHovered, setLinkHovered] = useState(false);
@@ -75,7 +76,8 @@ export const Cursor = (props) => {
         "cursor--clicked": clicked,
         "cursor--hidden": hidden,
         "cursor--link-hovered": linkHovered,
-        "active": props.active
+        "active": props.active,
+        "dark--text": props.darkText
     });
 
     return (

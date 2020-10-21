@@ -35,7 +35,6 @@ export class Nav extends Component {
             })
         });
 
-
         setTimeout(() => {
             this.setState({visible: true});
         }, 2500);

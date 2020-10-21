@@ -33,7 +33,6 @@ export class Homepage extends Component {
                                     {/*})}*/}
                                     <Project data={projects[0]} url={url} key={0}></Project>
                                 </section>
-
                             </div>
                         );
                     }}
