@@ -15,7 +15,9 @@ nav {
   opacity: 0;
 
   &.dark--text {
-
+    .title {
+      color: black;
+    }
   }
 
   &.visible {

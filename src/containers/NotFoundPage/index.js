@@ -8,7 +8,7 @@ import React from 'react';
 
 function NotFoundPage(props) {
     return (
-        <div>
+        <div className="not--found">
             <p>The page you're looking for doesn't exist.</p>
         </div>
     );

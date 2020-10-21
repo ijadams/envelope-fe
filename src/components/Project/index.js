@@ -68,8 +68,6 @@ export class Project extends Component {
                         play={true}
                         infinite={true}
                         mobileTouch={true}
-                        startupScreen={<Startup />}
-                        startupDelay={delay}
                         buttonContentRight={<div className="right--panel "></div>}
                         buttonContentLeft={<div className="left--panel"></div>}
                         organicArrows={false}

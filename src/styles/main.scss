@@ -57,6 +57,16 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: black;
+  position: fixed;
+  z-index: 9999999;
+  transition: 0.5s ease-out;
+  transition-delay: 2.5s, 2.8s;
+  transition-property: opacity, visibility;
+  &.loaded {
+    opacity: 0;
+    visibility: hidden;
+  }
+
 
   img.background {
     height: 100%;
@@ -64,6 +74,17 @@ body {
     filter: none;
     mix-blend-mode: inherit;
   }
+}
+
+.not--found {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2.8rem;
+  padding: 0 2rem;
 }
 
 .cursor {

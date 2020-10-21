@@ -10,5 +10,5 @@ export const navService = {
     setDarkText: bool => darkText.next({darkText: bool}),
     getNav: () => subject.asObservable(),
     getArrow: () => subjectArrow.asObservable(),
-    getDarkText: () => darkText.asObservable()
+    getDarkText: () => darkText.asObservable(),
 };

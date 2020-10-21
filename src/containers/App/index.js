@@ -38,7 +38,7 @@ export class App extends Component {
     render() {
         return (
             <div className="App">
-                <Nav/>
+                {window.location.pathname === '/' && <Nav/>}
                 <main>
                     <Switch>
                         <Route path="/" component={Homepage} exact/>
