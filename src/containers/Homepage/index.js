@@ -9,12 +9,30 @@ export class Homepage extends Component {
     constructor() {
         super();
         this.state = {
-            projectsLoaded: false
+            projectsLoaded: false,
+            activeIndex: 0,
+            sliderLoading: false
         }
     }
 
     componentDidMount() {
-        this.setState({projectsLoaded: true})
+        this.setState({projectsLoaded: true});
+
+        this.subscriptionLoader = navService.getActiveIndex().subscribe(data => {
+            this.setState({
+                activeIndex: data.activeIndex,
+                sliderLoading: true
+            });
+            setTimeout(() => {
+                this.setState({
+                    sliderLoading: false
+                });
+            }, 1000)
+        });
+    }
+
+    componentWillUnmount() {
+        this.subscriptionLoader.unsubscribe();
     }
 
     render() {
@@ -22,16 +40,16 @@ export class Homepage extends Component {
 
         return (
             <div>
-                <Startup loaded={this.state.projectsLoaded ? setTimeout(() => {return true;}, 2500) : false}/>
+                <Startup loaded={this.state.projectsLoaded ? setTimeout(() => {
+                    return true;
+                }, 2500) : false}/>
+                <div className={`slider--overlay ${this.state.sliderLoading ? "active" : ""}`}></div>
                 <Query query={PROJECTS_QUERY}>
                     {({data: {projects}}) => {
                         return (
                             <div>
                                 <section id="projects">
-                                    {/*{projects.map((p, i) => {*/}
-                                    {/*    return <Project data={p} url={url} key={i}></Project>*/}
-                                    {/*})}*/}
-                                    <Project data={projects[0]} url={url} key={0}></Project>
+                                    <Project data={projects[this.state.activeIndex]} url={url} key={0}></Project>
                                 </section>
                             </div>
                         );

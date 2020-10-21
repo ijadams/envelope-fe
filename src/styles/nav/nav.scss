@@ -4,7 +4,6 @@ nav {
   left: 0;
   padding: 0 2.5%;
   width: 95%;
-  z-index: 20;
   height: 5rem;
   display: flex;
   flex-wrap: wrap;
@@ -13,6 +12,7 @@ nav {
   transition: 1s ease-in;
   transition-delay: 0.75s;
   opacity: 0;
+  z-index: 20;
 
   &.dark--text {
     .title {

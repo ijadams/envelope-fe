@@ -256,6 +256,22 @@
   }
 }
 
+.slider--overlay {
+  position: absolute;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  background: white;
+  visibility: hidden;
+  transition: 0.5s ease-out;
+  opacity: 0;
+  &.active {
+    opacity: 1;
+    z-index: 21;
+    visibility: visible;
+  }
+}
+
 .left--panel {
   background: linear-gradient(to right, rgba(255,255,255,0.3), transparent);
 }

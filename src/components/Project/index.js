@@ -4,7 +4,7 @@ import * as coreStyles from 'react-awesome-slider/src/core/styles.scss';
 import Background from "../Background";
 import Section from "../Section";
 import Lettering from "../Lettering";
-import Startup from "../Startup";
+import equal from 'fast-deep-equal'
 
 import {
     withNavigationHandlers
@@ -44,7 +44,16 @@ export class Project extends Component {
             this.setState({
                 startupLoaded: true
             })
-        }, this.state.delay)
+        }, this.state.delay);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (!equal(this.props.data, prevProps.data)) {
+            this.setState({
+                startupLoaded: false
+            });
+            this.componentDidMount();
+        }
     }
 
     componentWillUnmount() {
@@ -56,7 +65,8 @@ export class Project extends Component {
         const delay = this.state.delay;
         const darkText = this.props.data.dark_text;
         return (
-            <div className={`home--container ${this.state.startupLoaded ? "active" : ""} ${darkText ? "dark--text" : ""}`}>
+            <div
+                className={`home--container ${this.state.startupLoaded ? "active" : ""} ${darkText ? "dark--text" : ""}`}>
                 <div className={`project ${this.state.navActive || this.state.arrowActive ? "active" : ""}`}>
                     <div className={`lettering--container ${this.state.startupLoaded ? "active" : ""}`}>
                         <Lettering
@@ -76,9 +86,10 @@ export class Project extends Component {
                         cssModule={[coreStyles]}
                     >
                         {this.props.data.project_images.map((p, i) => {
-                            return <React.Fragment key={i+'--frag'}>
-                                    <Section key={i+'--section'} backgroundColor="#000">
-                                            <Background key={i+'--bg'} src={this.props.url + p.url} blurred={this.state.navActive || this.state.arrowActive} />
+                            return <React.Fragment key={i + '--frag'}>
+                                <Section key={i + '--section'} backgroundColor="#000">
+                                    <Background key={i + '--bg'} src={this.props.url + p.url}
+                                                blurred={this.state.navActive || this.state.arrowActive}/>
                                 </Section>
                             </React.Fragment>
                         })}
