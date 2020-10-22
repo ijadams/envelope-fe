@@ -263,11 +263,11 @@
   width: 100%;
   background: white;
   visibility: hidden;
-  transition: 0.5s ease-out;
+  transition: 0.5s ease-in-out;
   opacity: 0;
   &.active {
     opacity: 1;
-    z-index: 21;
+    z-index: 999999;
     visibility: visible;
   }
 }

@@ -19,7 +19,7 @@ export class Project extends Component {
     constructor() {
         super();
         this.state = {
-            delay: 2500,
+            delay: 2250,
             startupLoaded: false,
             navActive: false,
             arrowActive: false,
@@ -42,7 +42,8 @@ export class Project extends Component {
         });
         setTimeout(() => {
             this.setState({
-                startupLoaded: true
+                startupLoaded: true,
+                delay: 1250
             })
         }, this.state.delay);
     }
