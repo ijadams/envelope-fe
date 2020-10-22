@@ -23,12 +23,12 @@ export class Project extends Component {
             startupLoaded: false,
             navActive: false,
             arrowActive: false,
+            darkText: false,
+            activeSlide: 0
         }
     }
 
     componentDidMount() {
-        navService.setDarkText(this.props.data.dark_text);
-
         // subscribe to home component messages
         this.navsub = navService.getNav().subscribe(data => {
             this.setState({
@@ -40,19 +40,39 @@ export class Project extends Component {
                 arrowActive: data.arrowActive
             })
         });
+        this.darktextsub = navService.getDarkText().subscribe(data => {
+            this.setState({
+                darkText: data.darkText
+            })
+        });
+
+        // loading and init
         setTimeout(() => {
             this.setState({
                 startupLoaded: true,
                 delay: 1250
-            })
+            });
+            this.setDarkText();
         }, this.state.delay);
+        console.log(this);
+    }
+
+    setDarkText() {
+        if (this.props.data.dark_slide_list && this.props.data.dark_slide_list.length && this.props.data.dark_slide_list.length > this.state.activeSlide) {
+            navService.setDarkText(this.props.data.dark_slide_list[this.state.activeSlide]);
+        } else {
+            navService.setDarkText(false);
+        }
     }
 
     componentDidUpdate(prevProps) {
         if (!equal(this.props.data, prevProps.data)) {
-            this.setState({
-                startupLoaded: false
-            });
+            setTimeout(() => {
+                this.setState({
+                    startupLoaded: false,
+                    activeSlide: 0
+                });
+            }, 500)
             this.componentDidMount();
         }
     }
@@ -60,16 +80,34 @@ export class Project extends Component {
     componentWillUnmount() {
         this.navsub.unsubscribe();
         this.arrowsub.unsubscribe();
+        this.darktextsub.unsubscribe();
+    }
+
+    activeSlide(pos) {
+        if (pos === 'left') {
+            if (this.state.activeSlide === 0) {
+                this.setState({activeSlide: this.props.data.project_images.length-1})
+            } else {
+                this.setState({activeSlide: this.state.activeSlide-1})
+            }
+        }
+        if (pos === 'right') {
+            if (this.state.activeSlide === this.props.data.project_images.length-1) {
+                this.setState({activeSlide: 0})
+            } else {
+                this.setState({activeSlide: this.state.activeSlide+1})
+            }
+        }
+        this.setDarkText();
     }
 
     render() {
         const delay = this.state.delay;
-        const darkText = this.props.data.dark_text;
         return (
             <div
-                className={`home--container ${this.state.startupLoaded ? "active" : ""} ${darkText ? "dark--text" : ""}`}>
+                className={`home--container ${this.state.startupLoaded ? "active" : ""} ${this.state.darkText ? "dark--text" : ""}`}>
                 <div className={`project ${this.state.navActive || this.state.arrowActive ? "active" : ""}`}>
-                    <div className={`lettering--container ${this.state.startupLoaded ? "active" : ""}`}>
+                    <div className={`lettering--container ${this.state.darkText ? "dark--text" : ""} ${this.state.startupLoaded ? "active" : ""}`}>
                         <Lettering
                             title={this.props.data.project_title}
                             text={this.props.data.project_description}
@@ -79,8 +117,13 @@ export class Project extends Component {
                         play={true}
                         infinite={true}
                         mobileTouch={true}
-                        buttonContentRight={<div className="right--panel "></div>}
-                        buttonContentLeft={<div className="left--panel"></div>}
+                        buttonContentRight={<div className="right--panel" onClick={() => {
+                            this.activeSlide('right')
+                        }}></div>}
+                        buttonContentLeft={<div className="left--panel" onClick={() => {
+                            this.activeSlide('left')
+                        }}></div>}
+                        selected={this.state.activeSlide}
                         organicArrows={false}
                         cancelOnInteraction={false} // should stop playing on user interaction
                         interval={delay}

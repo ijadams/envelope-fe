@@ -160,6 +160,11 @@
       opacity: 1;
     }
   }
+  &.dark--text {
+    .lettering {
+      color: black !important;
+    }
+  }
 }
 
 .lettering {
@@ -263,7 +268,7 @@
   width: 100%;
   background: white;
   visibility: hidden;
-  transition: 0.5s ease-in-out;
+  transition: 0.25s ease-in-out;
   opacity: 0;
   &.active {
     opacity: 1;

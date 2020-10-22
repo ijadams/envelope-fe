@@ -7,7 +7,7 @@ const PROJECTS_QUERY = gql`
       project_title
       project_description
       project_tags
-      dark_text
+      dark_slide_list  
       project_images {
         id
         url
