@@ -95,8 +95,8 @@ export class Nav extends Component {
                         </div>
                     </div>
                 </nav>
-                <InfoOverlay active={this.state.active}/>
-                <ArrowOverlay active={this.state.arrowActive}/>
+                <InfoOverlay active={this.state.active} darkText={this.state.darkText}/>
+                <ArrowOverlay active={this.state.arrowActive} darkText={this.state.darkText}/>
             </div>
         );
     }

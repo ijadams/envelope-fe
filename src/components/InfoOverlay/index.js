@@ -9,7 +9,7 @@ export const InfoOverlay = (props) => {
         <Query query={INFO_QUERY}>
             {({data: {info}}) => {
                 return (
-                    <div className={`nav--overlay ${props.active ? "active" : ""}`}>
+                    <div className={`nav--overlay ${props.active ? "active" : ""} ${props.darkText ? "dark--text" : ""}`}>
                         <div className="info--container">
                             <div className="top">
                                 <ReactMarkdown source={info.top}/>

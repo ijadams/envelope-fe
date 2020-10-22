@@ -18,7 +18,7 @@ export const ArrowOverlay = (props) => {
                 {({data: {projects}}) => {
                     return (
                         <div>
-                            <div className={`nav--overlay ${props.active ? "active" : ""}`}>
+                            <div className={`nav--overlay ${props.active ? "active" : ""} ${props.darkText ? "dark--text" : ""}`}>
                                 <ul className="project--nav">
                                     {projects.map((p, i) => {
                                         return <li key={i} onClick={() => {

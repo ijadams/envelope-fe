@@ -106,12 +106,25 @@ nav {
   color: black;
   background: transparent;
 
+  &.dark--text {
+    color: black;
+    .info--container {
+      h1, h2, h3, p, a {
+        color: black !important;
+        font-family: 'Romie-Regular' !important;
+      }
+    }
+    li {
+      color: black;
+    }
+  }
+
   .project--nav {
     width: 100%;
      li {
        border-top: 1px solid rgba(255,255,255,0.5);
        border-bottom: 1px solid rgba(255,255,255,0.5);
-       font-family: 'Romie-Regular' !important;
+       font-family: 'NeueMachina-Light' !important;
        color: white;
        text-transform: uppercase;
        text-align: center;
@@ -119,6 +132,9 @@ nav {
        display: flex;
        align-items: center;
        justify-content: center;
+       &:hover {
+         font-family: 'NeueMachina-Regular' !important;
+       }
        .project--title {
          font-size: 3rem;
          padding-bottom: 1rem;
