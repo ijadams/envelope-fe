@@ -48,7 +48,7 @@ export class Homepage extends Component {
                     {({data: {projects}}) => {
                         return (
                             <div>
-                                <section id="projects">
+                                <section id="projects" className={`${!this.state.projectsLoaded ? "hidden" : ""}`}>
                                     <Project data={projects[this.state.activeIndex]} url={url} key={0}></Project>
                                 </section>
                             </div>
