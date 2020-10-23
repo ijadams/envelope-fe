@@ -52,14 +52,14 @@ export class Project extends Component {
                 startupLoaded: true,
                 delay: 1250
             });
-            this.setDarkText();
+            this.setDarkText(0);
         }, this.state.delay);
         console.log(this);
     }
 
-    setDarkText() {
-        if (this.props.data.dark_slide_list && this.props.data.dark_slide_list.length && this.props.data.dark_slide_list.length > this.state.activeSlide) {
-            navService.setDarkText(this.props.data.dark_slide_list[this.state.activeSlide]);
+    setDarkText(index) {
+        if (this.props.data.dark_slide_list && this.props.data.dark_slide_list.length && this.props.data.dark_slide_list.length >= index - 1) {
+            navService.setDarkText(this.props.data.dark_slide_list[index]);
         } else {
             navService.setDarkText(false);
         }
@@ -67,6 +67,7 @@ export class Project extends Component {
 
     componentDidUpdate(prevProps) {
         if (!equal(this.props.data, prevProps.data)) {
+            console.log('update');
             setTimeout(() => {
                 this.setState({
                     startupLoaded: false,
@@ -86,19 +87,22 @@ export class Project extends Component {
     activeSlide(pos) {
         if (pos === 'left') {
             if (this.state.activeSlide === 0) {
-                this.setState({activeSlide: this.props.data.project_images.length-1})
+                this.setState({activeSlide: this.props.data.project_images.length - 1})
+                this.setDarkText(this.props.data.project_images.length - 1);
             } else {
-                this.setState({activeSlide: this.state.activeSlide-1})
+                this.setState({activeSlide: this.state.activeSlide - 1});
+                this.setDarkText(this.state.activeSlide - 1);
             }
         }
         if (pos === 'right') {
-            if (this.state.activeSlide === this.props.data.project_images.length-1) {
-                this.setState({activeSlide: 0})
+            if (this.state.activeSlide === this.props.data.project_images.length - 1) {
+                this.setState({activeSlide: 0});
+                this.setDarkText(0);
             } else {
-                this.setState({activeSlide: this.state.activeSlide+1})
+                this.setState({activeSlide: this.state.activeSlide + 1});
+                this.setDarkText(this.state.activeSlide + 1);
             }
         }
-        this.setDarkText();
     }
 
     render() {
@@ -107,7 +111,8 @@ export class Project extends Component {
             <div
                 className={`home--container ${this.state.startupLoaded ? "active" : ""} ${this.state.darkText ? "dark--text" : ""}`}>
                 <div className={`project ${this.state.navActive || this.state.arrowActive ? "active" : ""}`}>
-                    <div className={`lettering--container ${this.state.darkText ? "dark--text" : ""} ${this.state.startupLoaded ? "active" : ""}`}>
+                    <div
+                        className={`lettering--container ${this.state.darkText ? "dark--text" : ""} ${this.state.startupLoaded ? "active" : ""}`}>
                         <Lettering
                             title={this.props.data.project_title}
                             text={this.props.data.project_description}
