@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import AwesomeSlider from 'react-awesome-slider';
 import * as coreStyles from 'react-awesome-slider/src/core/styles.scss';
+import AnimationStyles from 'react-awesome-slider/src/styled/scale-out-animation/scale-out-animation.scss';
+
 import Background from "../Background";
 import Section from "../Section";
 import Lettering from "../Lettering";
@@ -120,6 +122,8 @@ export class Project extends Component {
                         play={true}
                         infinite={true}
                         mobileTouch={true}
+                        animation="scaleOutAnimation"
+                        cssModule={[coreStyles, AnimationStyles]}
                         buttonContentRight={<div className="right--panel" onClick={() => {
                             this.activeSlide('right')
                         }}></div>}
@@ -130,7 +134,6 @@ export class Project extends Component {
                         organicArrows={false}
                         cancelOnInteraction={false} // should stop playing on user interaction
                         interval={delay}
-                        cssModule={[coreStyles]}
                     >
                         {this.props.data.project_images.map((p, i) => {
                             return <React.Fragment key={i + '--frag'}>
