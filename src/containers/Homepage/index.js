@@ -16,7 +16,10 @@ export class Homepage extends Component {
     }
 
     componentDidMount() {
-        this.setState({projectsLoaded: true});
+
+        setTimeout(() => {
+            this.setState({projectsLoaded: true});
+        }, 300)
 
         this.subscriptionLoader = navService.getActiveIndex().subscribe(data => {
             this.setState({
@@ -48,9 +51,11 @@ export class Homepage extends Component {
                     {({data: {projects}}) => {
                         return (
                             <div>
-                                <section id="projects" className={`${!this.state.projectsLoaded ? "hidden" : ""}`}>
-                                    <Project data={projects[this.state.activeIndex]} url={url} key={0}></Project>
-                                </section>
+                                {this.state.projectsLoaded &&
+                                    <section id="projects">
+                                        <Project data={projects[this.state.activeIndex]} url={url} key={0}></Project>
+                                    </section>
+                                }
                             </div>
                         );
                     }}
