@@ -124,9 +124,33 @@ nav {
 
   .project--nav {
     width: 100%;
-     li {
+    @media screen and (max-width: 768px) {
+      li {
+        border-top: 1px solid black !important;
+        color: black;
+        &:last-of-type {
+          border-bottom: 1px solid black !important;
+        }
+      }
+      .project--title {
+        color: black;
+        .index {
+          color: black;
+        }
+      }
+      .tags {
+        color: black;
+      }
+      span {
+        color: black;
+      }
+    }
+
+    li {
        border-top: 1px solid rgba(255,255,255,0.5);
-       border-bottom: 1px solid rgba(255,255,255,0.5);
+      &:last-of-type {
+        border-bottom: 1px solid rgba(255,255,255,0.5);
+      }
        font-family: 'NeueMachina-Light' !important;
        color: white;
        text-transform: uppercase;
@@ -252,7 +276,6 @@ nav {
       opacity: 1;
       .info--container {
         color: black;
-
         a {
           color: black;
           text-decoration: underline;

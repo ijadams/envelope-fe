@@ -53,7 +53,7 @@ export class Homepage extends Component {
                             <div>
                                 {this.state.projectsLoaded &&
                                     <section id="projects">
-                                        <Project data={projects[this.state.activeIndex]} url={url} key={0}></Project>
+                                        <Project data={projects[this.state.activeIndex]} activeIndex={this.state.activeIndex} url={url} key={0}></Project>
                                     </section>
                                 }
                             </div>

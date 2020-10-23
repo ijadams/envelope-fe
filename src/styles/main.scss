@@ -153,6 +153,17 @@ body {
     background-color: transparent;
     z-index: 9999;
   }
+  @media screen and (max-width: 768px) {
+    width: 5rem !important;
+    height: 5rem !important;
+    background: url('https://ijadams.s3.amazonaws.com/envelope/Cursor.png') no-repeat !important;
+    background-size: contain !important;
+    background-position: center !important;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    transition: all 150ms ease;
+    z-index: 9999;
+  }
 }
 
 .cursor--hidden {

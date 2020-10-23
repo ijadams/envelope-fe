@@ -1,6 +1,27 @@
 #projects {
   height: 100vh;
   width: 100vw;
+  #finger {
+    position: absolute;
+    z-index: 3;
+    display: none;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    transition: 0.5s ease-in-out;
+    &.hidden {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    @media screen and (max-width: 768px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        max-width: 60px;
+      }
+    }
+  }
   &.hidden {
     visibility: hidden;
   }

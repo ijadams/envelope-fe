@@ -26,7 +26,8 @@ export class Project extends Component {
             navActive: false,
             arrowActive: false,
             darkText: false,
-            activeSlide: 0
+            activeSlide: 0,
+            fingered: false
         }
     }
 
@@ -87,6 +88,7 @@ export class Project extends Component {
     }
 
     activeSlide(pos) {
+        this.setState({fingered: true})
         if (pos === 'left') {
             if (this.state.activeSlide === 0) {
                 this.setState({activeSlide: this.props.data.project_images.length - 1})
@@ -109,10 +111,14 @@ export class Project extends Component {
 
     render() {
         const delay = this.state.delay;
+        const finger = this.state.darkText ? "https://ijadams.s3.amazonaws.com/envelope/finger-b.png" : "https://ijadams.s3.amazonaws.com/envelope/finger-w.png";
         return (
             <div
                 className={`home--container ${this.state.startupLoaded ? "active" : ""} ${this.state.darkText ? "dark--text" : ""}`}>
                 <div className={`project ${this.state.navActive || this.state.arrowActive ? "active" : ""}`}>
+                    <div id="finger" className={`${this.props.activeIndex === 0 && !this.state.fingered ? "" : "hidden"}`}>
+                        <img alt="finger" src={finger}/>
+                    </div>
                     <div
                         className={`lettering--container ${this.state.darkText ? "dark--text" : ""} ${this.state.startupLoaded ? "active" : ""}`}>
                         <Lettering
