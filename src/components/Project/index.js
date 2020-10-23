@@ -112,6 +112,11 @@ export class Project extends Component {
     render() {
         const delay = this.state.delay;
         const finger = this.state.darkText ? "https://ijadams.s3.amazonaws.com/envelope/finger-b.png" : "https://ijadams.s3.amazonaws.com/envelope/finger-w.png";
+        const isMobileAgent = () => {
+            const ua = navigator.userAgent;
+            return /Android|Mobi/i.test(ua);
+        };
+
         return (
             <div
                 className={`home--container ${this.state.startupLoaded ? "active" : ""} ${this.state.darkText ? "dark--text" : ""}`}>
@@ -127,10 +132,38 @@ export class Project extends Component {
                             tags={this.props.data.project_tags}
                         />
                     </div>
+                    {!isMobileAgent &&
+                        <Slider
+                            play={true}
+                            infinite={true}
+                            animation="scaleOutAnimation"
+                            cssModule={[coreStyles, AnimationStyles]}
+                            buttonContentRight={<div className="right--panel" onClick={() => {
+                                this.activeSlide('right')
+                            }}></div>}
+                            buttonContentLeft={<div className="left--panel" onClick={() => {
+                                this.activeSlide('left')
+                            }}></div>}
+                            selected={this.state.activeSlide}
+                            organicArrows={false}
+                            cancelOnInteraction={false} // should stop playing on user interaction
+                            interval={delay}
+                        >
+                            {this.props.data.project_images.map((p, i) => {
+                                return <React.Fragment key={i + '--frag'}>
+                                    <Section key={i + '--section'} backgroundColor="#000">
+                                        <Background key={i + '--bg'} src={this.props.url + p.url}
+                                                    blurred={this.state.navActive || this.state.arrowActive}/>
+                                    </Section>
+                                </React.Fragment>
+                            })}
+                        </Slider>
+                    }
+
+                    {isMobileAgent &&
                     <Slider
                         play={true}
                         infinite={true}
-                        mobileTouch={true}
                         animation="scaleOutAnimation"
                         cssModule={[coreStyles, AnimationStyles]}
                         buttonContentRight={<div className="right--panel" onClick={() => {
@@ -144,7 +177,7 @@ export class Project extends Component {
                         cancelOnInteraction={false} // should stop playing on user interaction
                         interval={delay}
                     >
-                        {this.props.data.project_images.map((p, i) => {
+                        {this.props.data.project_images_mobile.map((p, i) => {
                             return <React.Fragment key={i + '--frag'}>
                                 <Section key={i + '--section'} backgroundColor="#000">
                                     <Background key={i + '--bg'} src={this.props.url + p.url}
@@ -153,6 +186,7 @@ export class Project extends Component {
                             </React.Fragment>
                         })}
                     </Slider>
+                    }
                 </div>
             </div>
         );
