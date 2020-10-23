@@ -48,13 +48,15 @@ export class Project extends Component {
             })
         });
 
+        // set dark text for initial slide
+        this.setDarkText(0);
+
         // loading and init
         setTimeout(() => {
             this.setState({
                 startupLoaded: true,
                 delay: 1250
             });
-            this.setDarkText(0);
         }, this.state.delay);
     }
 
@@ -116,6 +118,7 @@ export class Project extends Component {
                         <Lettering
                             title={this.props.data.project_title}
                             text={this.props.data.project_description}
+                            tags={this.props.data.project_tags}
                         />
                     </div>
                     <Slider

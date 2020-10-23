@@ -35,6 +35,9 @@ nav {
       margin-bottom: -10px;
       opacity: 1;
       transition: 0.15s ease-in-out;
+      @media screen and (max-width: 768px){
+        display: none;
+      }
 
       &.hidden {
         opacity: 0;

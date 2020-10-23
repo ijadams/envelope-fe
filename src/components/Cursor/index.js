@@ -1,18 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import classNames from 'classnames';
 
-export const isMobile = () => {
+
+export const isMobileAgent = () => {
     const ua = navigator.userAgent;
     return /Android|Mobi/i.test(ua);
 };
 
 export const Cursor = (props) => {
 
+    const isMobile = /Android|Mobi/i.test(navigator.userAgent);
 
-    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [position, setPosition] = useState({x: 0, y: 0});
     const [clicked, setClicked] = useState(false);
     const [linkHovered, setLinkHovered] = useState(false);
     const [hidden, setHidden] = useState(false);
+
+    if (typeof navigator !== "undefined" && isMobile) {
+        return (
+            <div></div>
+        );
+    }
 
     const addEventListeners = () => {
         document.addEventListener("mousemove", onMouseMove);
@@ -41,12 +49,8 @@ export const Cursor = (props) => {
     /* eslint-enable */
 
 
-
-    if (typeof navigator !== "undefined" && isMobile()) return null;
-
-
     const onMouseMove = (e) => {
-        setPosition({ x: e.clientX, y: e.clientY });
+        setPosition({x: e.clientX, y: e.clientY});
     };
 
     const onMouseDown = () => {
@@ -83,7 +87,7 @@ export const Cursor = (props) => {
     return (
         <div
             className={cursorClasses}
-            style={{ left: `${position.x}px`, top: `${position.y}px` }}
+            style={{left: `${position.x}px`, top: `${position.y}px`}}
         />
     );
 };
