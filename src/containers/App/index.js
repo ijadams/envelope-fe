@@ -15,6 +15,7 @@ export class App extends Component {
             navActive: false,
             arrowActive: false,
             darkText: false,
+            showCursor: false,
         }
     }
 
@@ -35,6 +36,10 @@ export class App extends Component {
                 darkText: data.darkText,
             })
         });
+
+        setTimeout(() => {
+            this.setState({showCursor: true});
+        }, 500);
     }
 
     componentWillUnmount() {
@@ -53,7 +58,8 @@ export class App extends Component {
                         <Route component={NotFoundPage}/>
                     </Switch>
                 </main>
-                <Cursor active={this.state.navActive || this.state.arrowActive} darkText={this.state.darkText}/>
+                {this.state.showCursor &&
+                <Cursor active={this.state.navActive || this.state.arrowActive} darkText={this.state.darkText}/>}
                 <Footer/>
             </div>
         );
