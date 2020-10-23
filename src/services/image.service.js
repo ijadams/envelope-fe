@@ -49,7 +49,6 @@ export const imageService = {
         rgb.r = ~~(rgb.r / count);
         rgb.g = ~~(rgb.g / count);
         rgb.b = ~~(rgb.b / count);
-        console.log(rgb);
         return rgb;
 
     }

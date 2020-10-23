@@ -54,7 +54,6 @@ export class Project extends Component {
             });
             this.setDarkText(0);
         }, this.state.delay);
-        console.log(this);
     }
 
     setDarkText(index) {
@@ -67,7 +66,6 @@ export class Project extends Component {
 
     componentDidUpdate(prevProps) {
         if (!equal(this.props.data, prevProps.data)) {
-            console.log('update');
             setTimeout(() => {
                 this.setState({
                     startupLoaded: false,
