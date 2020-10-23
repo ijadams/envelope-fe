@@ -124,7 +124,7 @@ body {
     margin-left: 0.5rem;
     width: 5rem;
     height: 5rem;
-    background: url('https://ijadams.s3.amazonaws.com/envelope/Cursor.png') no-repeat;
+    background: url('https://ijadams.s3.amazonaws.com/envelope/Cursor-white.png') no-repeat;
     background-size: contain;
     background-position: center;
     position: fixed;
@@ -132,7 +132,7 @@ body {
     pointer-events: none;
     transition: all 150ms ease;
     transition-property: background-color, opacity, transform, mix-blend-mode;
-    mix-blend-mode: multiply;
+    mix-blend-mode: color-dodge;
     background-color: transparent;
     z-index: 9999;
   }
