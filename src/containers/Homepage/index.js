@@ -17,6 +17,8 @@ export class Homepage extends Component {
 
     componentDidMount() {
 
+
+
         setTimeout(() => {
             this.setState({projectsLoaded: true});
         }, 300)

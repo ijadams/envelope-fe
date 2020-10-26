@@ -1,6 +1,7 @@
 #projects {
   height: 100vh;
   width: 100vw;
+
   #finger {
     position: absolute;
     z-index: 3;
@@ -9,10 +10,12 @@
     width: 100%;
     opacity: 1;
     transition: 0.5s ease-in-out;
+
     &.hidden {
       opacity: 0;
       transform: translateX(-100%);
     }
+
     @media screen and (max-width: 768px) {
       display: flex;
       align-items: center;
@@ -22,20 +25,25 @@
       }
     }
   }
+
   &.hidden {
     visibility: hidden;
   }
+
   > div {
     height: 100%;
     width: 100%;
   }
+
   .project {
     height: 100%;
     width: 100%;
     display: none;
+
     &:first-of-type {
       display: block;
     }
+
     > .awssld {
       height: 100%;
     }
@@ -52,6 +60,7 @@
   object-fit: cover;
   z-index: 0;
   transition: 0.3s;
+
   &.active {
     filter: blur(15px) brightness(0.5);
   }
@@ -107,9 +116,11 @@
     flex: 1;
     text-align: center;
   }
+
   > div:nth-child(1) {
     text-align: left;
   }
+
   > div:nth-child(3) {
     text-align: right;
   }
@@ -132,6 +143,7 @@
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0.05);
   }
+
   svg {
     width: 20px;
     vertical-align: text-bottom;
@@ -170,23 +182,30 @@
   text-align: center;
   opacity: 1;
   transition: 0.15s ease-in-out;
+  @media screen and (max-width: 768px) {
+    bottom: 1rem;
+  }
+
   .lettering {
     padding: 2rem 5rem;
     opacity: 0;
     transition: 0.5s ease-in;
     transition-delay: 0.3s;
+
     .tags {
       display: none;
     }
+
     @media screen and (max-width: 768px) {
       padding: 1rem;
       text-transform: uppercase;
       text-align: left;
       .title {
         display: block;
-        font-size: 2rem;
-        margin-bottom: 1rem;
-      };
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+    ;
       .description {
         display: none;
       }
@@ -195,11 +214,13 @@
       }
     }
   }
+
   &.active {
     .lettering {
       opacity: 1;
     }
   }
+
   &.dark--text {
     .lettering {
       color: black !important;
@@ -211,6 +232,7 @@
   color: #fff;
   font-family: monospace;
   text-align: center;
+
   .title {
     text-transform: uppercase;
   }
@@ -255,6 +277,7 @@
   .awssld__controls button {
     visibility: hidden;
   }
+
   &.active {
     .awssld__controls button {
       visibility: visible;
@@ -266,11 +289,11 @@
   .lettering--container {
     opacity: 0;
   }
+
   .awssld__controls button {
     z-index: 8;
   }
 }
-
 
 
 .awssld__content > img {
@@ -296,6 +319,7 @@
   position: absolute;
   transition: 0.5s ease-in;
   opacity: 0;
+
   &:hover {
     opacity: 1;
   }
@@ -310,6 +334,7 @@
   visibility: hidden;
   transition: 0.5s ease-out;
   opacity: 0;
+
   &.active {
     opacity: 1;
     z-index: 999999;
@@ -318,8 +343,9 @@
 }
 
 .left--panel {
-  background: linear-gradient(to right, rgba(255,255,255,0.3), transparent);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.3), transparent);
 }
+
 .right--panel {
-  background: linear-gradient(to left, rgba(255,255,255,0.3), transparent);
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.3), transparent);
 }
