@@ -117,7 +117,7 @@ nav {
     color: black;
     .info--container {
       h1, h2, h3, p, a {
-        color: black !important;
+        color: white !important;
         font-family: 'Romie-Regular' !important;
       }
     }
@@ -259,9 +259,13 @@ nav {
       text-transform: uppercase;
       font-size: 1.8vw;
 
+      @media screen and (max-width: 768px) {
+        font-size: 1rem;
+      }
+
       p {
         display: inline-block;
-        margin: auto 3px;
+        margin: auto;
       }
 
       a {
@@ -281,7 +285,7 @@ nav {
     @media screen and (max-width: 768px) {
       opacity: 1;
       .info--container {
-        color: black;
+        color: white;
         a {
           color: black;
           text-decoration: underline;
