@@ -38,56 +38,18 @@ export class Homepage extends Component {
 
         this.subscriptionLoader = navService.getActiveIndex().subscribe(data => {
             this.setState({
-                activeIndex: data.activeIndex,
                 sliderLoading: true
+            });
+            this.setState({
+                activeIndex: data.activeIndex
             });
             setTimeout(() => {
                 this.setState({
                     sliderLoading: false
                 });
-            }, 1000)
+            }, 1250)
         });
     }
-
-    handleTouchMove(e) {
-        // disable handle move
-        return;
-
-        if ( !this.state.touchStart ) {
-            return;
-        }
-
-        const yUp = e.touches[0].clientY;
-        const yDiff = this.state.touchStart - yUp;
-
-        if (Math.abs(yDiff) > 10) {
-            if ( yDiff > 0 && this.state.activeIndex > 0) {
-                /* up swipe */
-                const i = this.state.activeIndex - 1;
-                navService.setActiveIndex(i);
-                navService.toggleArrow(false);
-                navService.toggleNav(false);
-            } else if (yDiff < 0 && this.state.activeIndex < this.state.projectsLength-1) {
-                /* down swipe */
-                const i = this.state.activeIndex + 1;
-                navService.setActiveIndex(i)
-                navService.toggleArrow(false);
-                navService.toggleNav(false);
-            }
-        }
-        this.setState({touchStart: null})
-    }
-
-    handleTouchStart(e) {
-        if (this.state.isMobile) {
-            this.setState({touchStart: e.touches[0].clientY})
-        }
-    }
-
-    handleTouchEnd(e) {
-        this.setState({touchStart: null})
-    }
-
 
     onWheel(event) {
         if (Math.abs(event.deltaY) < 10) {
@@ -110,10 +72,7 @@ export class Homepage extends Component {
     render() {
         const url = process.env.NODE_ENV !== "development" ? '' : process.env.REACT_APP_BACKEND_URL;
         return (
-            <div onWheel={(e) => this.onWheel(e)}
-                 onTouchStart={touchStartEvent => this.handleTouchStart(touchStartEvent)}
-                 onTouchMove={touchMoveEvent => this.handleTouchMove(touchMoveEvent)}
-                 onTouchEnd={() => this.handleTouchEnd()}>
+            <div onWheel={(e) => this.onWheel(e)}>
                 <Startup loaded={this.state.projectsLoaded ? setTimeout(() => {
                     return true;
                 }, 2500) : false}/>
