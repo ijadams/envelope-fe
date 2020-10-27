@@ -38,6 +38,7 @@ export class Project extends Component {
                 navActive: data.active
             })
         });
+
         this.arrowsub = navService.getArrow().subscribe(data => {
             this.setState({
                 arrowActive: data.arrowActive
@@ -51,6 +52,8 @@ export class Project extends Component {
 
         // set dark text for initial slide
         this.setDarkText(0);
+
+        navService.setProjectsLength(this.props.projectsLength);
 
         // loading and init
         setTimeout(() => {

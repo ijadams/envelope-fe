@@ -12,19 +12,28 @@ export class Homepage extends Component {
             projectsLoaded: false,
             activeIndex: 0,
             sliderLoading: false,
-            projects: null
+            projectsLength: null,
+            isMobile: false,
+            touchStart: null,
+            touchEnd: null,
         }
     }
 
     componentDidMount() {
+
+        const isMobile = /Android|Mobi/i.test(navigator.userAgent);
+
+        if (isMobile) {
+            this.setState({isMobile: true});
+        }
 
         setTimeout(() => {
             navService.setProjectsLoaded(true);
             this.setState({projectsLoaded: true});
         }, 300)
 
-        this.projectssubcription = navService.getProjects().subscribe(data => {
-            this.setState({projects: data.projects});
+        this.projectssubcription = navService.getProjectsLength().subscribe(data => {
+            this.setState({projectsLength: data.projectsLength});
         });
 
         this.subscriptionLoader = navService.getActiveIndex().subscribe(data => {
@@ -40,8 +49,45 @@ export class Homepage extends Component {
         });
     }
 
+    handleTouchMove(e) {
+        if ( !this.state.touchStart ) {
+            return;
+        }
+
+        const yUp = e.touches[0].clientY;
+        const yDiff = this.state.touchStart - yUp;
+
+        if (Math.abs(yDiff) > 10) {
+            if ( yDiff > 0 && this.state.activeIndex > 0) {
+                /* up swipe */
+                const i = this.state.activeIndex - 1;
+                navService.setActiveIndex(i);
+                navService.toggleArrow(false);
+                navService.toggleNav(false);
+            } else if (this.state.activeIndex < this.state.projectsLength-1) {
+                /* down swipe */
+                const i = this.state.activeIndex + 1;
+                navService.setActiveIndex(i)
+                navService.toggleArrow(false);
+                navService.toggleNav(false);
+            }
+        }
+        this.setState({touchStart: null})
+    }
+
+    handleTouchStart(e) {
+        if (this.state.isMobile) {
+            this.setState({touchStart: e.touches[0].clientY})
+        }
+    }
+
+    handleTouchEnd(e) {
+        this.setState({touchStart: null})
+    }
+
+
     onWheel(event) {
-        if (event.deltaY < 0 && this.state.activeIndex !== this.state.projects.length - 1) {
+        if (event.deltaY < 0 && this.state.activeIndex !== this.state.projectsLength - 1) {
             const i = this.state.activeIndex + 1;
             navService.setActiveIndex(i)
             navService.toggleArrow(false);
@@ -54,12 +100,6 @@ export class Homepage extends Component {
         }
     }
 
-    setProjects(projects) {
-        if (!this.state.projects) {
-            navService.setProjects(projects)
-        }
-    }
-
     componentWillUnmount() {
         this.subscriptionLoader.unsubscribe();
         this.projectssubcription.unsubscribe();
@@ -67,9 +107,11 @@ export class Homepage extends Component {
 
     render() {
         const url = process.env.NODE_ENV !== "development" ? '' : process.env.REACT_APP_BACKEND_URL;
-
         return (
-            <div onWheel={(e) => this.onWheel(e)}>
+            <div onWheel={(e) => this.onWheel(e)}
+                 onTouchStart={touchStartEvent => this.handleTouchStart(touchStartEvent)}
+                 onTouchMove={touchMoveEvent => this.handleTouchMove(touchMoveEvent)}
+                 onTouchEnd={() => this.handleTouchEnd()}>
                 <Startup loaded={this.state.projectsLoaded ? setTimeout(() => {
                     return true;
                 }, 2500) : false}/>
@@ -78,10 +120,10 @@ export class Homepage extends Component {
                     {({data: {projects}}) => {
                         return (
                             <div>
-                                {this.setProjects(projects)}
                                 {this.state.projectsLoaded &&
                                 <section id="projects">
                                     <Project data={projects[this.state.activeIndex]}
+                                             projectsLength={projects.length}
                                              activeIndex={this.state.activeIndex} url={url} key={0}></Project>
                                 </section>
                                 }
