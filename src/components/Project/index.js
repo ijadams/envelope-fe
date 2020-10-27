@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import AwesomeSlider from 'react-awesome-slider';
 import * as coreStyles from 'react-awesome-slider/src/core/styles.scss';
-import AnimationStyles from 'react-awesome-slider/src/styled/scale-out-animation/scale-out-animation.scss';
+import * as AnimationStyles from '../../styles/scale-out/scale-out-animation.scss';
 
 import Background from "../Background";
 import Section from "../Section";
