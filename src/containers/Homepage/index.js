@@ -50,6 +50,9 @@ export class Homepage extends Component {
     }
 
     handleTouchMove(e) {
+        // disable handle move
+        return;
+
         if ( !this.state.touchStart ) {
             return;
         }
