@@ -147,7 +147,6 @@ nav {
       }
       .tags {
         color: black;
-        font-size: 1rem !important;
       }
       span {
         color: black;
@@ -205,27 +204,23 @@ nav {
       display: inline;
     }
 
-    h1 {
-      margin-right: 10px;
-      font-size: 3rem;
-    }
-
-    h2 {
-      margin-right: 10px;
-      font-size: 3rem;
-    }
-
     h1, h3 {
       font-family: 'NeueMachina-Regular';
     }
 
+    h1 {
+      margin-right: 10px;
+      font-size: 1.5rem;
+    }
+
     h2 {
+      margin-right: 10px;
       font-family: 'Romie-Regular', sans-serif;
-      font-size: 2.5rem;
+      font-size: 1rem;
     }
 
     h3 {
-      font-size: 1rem;
+      font-size: 0.8rem;
       font-family: 'NeueMachina-Regular' !important;
       position: absolute;
     }
