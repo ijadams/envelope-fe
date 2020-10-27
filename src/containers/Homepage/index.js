@@ -82,7 +82,7 @@ export class Homepage extends Component {
                         return (
                             <div>
                                 {this.state.projectsLoaded &&
-                                <section id="projects">
+                                <section id="projects" className={`${this.state.sliderLoading ? "slide--loading" : ""}`}>
                                     <Project data={projects[this.state.activeIndex]}
                                              projectsLength={projects.length}
                                              activeIndex={this.state.activeIndex} url={url} key={0}></Project>
