@@ -5,6 +5,7 @@ const subjectArrow = new Subject();
 const darkText = new Subject();
 const activeIndex = new Subject();
 const projectsLoaded = new Subject();
+const projects = new Subject();
 
 export const navService = {
     toggleNav: bool => subject.next({active: bool}),
@@ -17,4 +18,6 @@ export const navService = {
     getActiveIndex: () => activeIndex.asObservable(),
     setProjectsLoaded: n => projectsLoaded.next({projectsLoaded: n}),
     getProjectsLoaded: () => projectsLoaded.asObservable(),
+    setProjects: n => projects.next({projects: n}),
+    getProjects: () => projects.asObservable(),
 };

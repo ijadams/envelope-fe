@@ -27,7 +27,7 @@ export class Project extends Component {
             arrowActive: false,
             darkText: false,
             activeSlide: 0,
-            fingered: false
+            fingered: false,
         }
     }
 
@@ -121,7 +121,11 @@ export class Project extends Component {
             <div
                 className={`home--container ${this.state.startupLoaded ? "active" : ""} ${this.state.darkText ? "dark--text" : ""}`}>
                 <div className={`project ${this.state.navActive || this.state.arrowActive ? "active" : ""}`}>
-                    <div id="finger" className={`${this.props.activeIndex === 0 && !this.state.fingered ? "" : "hidden"}`}>
+                    <div id="finger"
+                         onClick={() => {
+                             this.activeSlide('right')
+                         }}
+                         className={`${this.props.activeIndex === 0 && !this.state.fingered ? "" : "hidden"}`}>
                         <img alt="finger" src={finger}/>
                     </div>
                     <div
@@ -133,31 +137,31 @@ export class Project extends Component {
                         />
                     </div>
                     {!isMobileAgent &&
-                        <Slider
-                            play={true}
-                            infinite={true}
-                            animation="scaleOutAnimation"
-                            cssModule={[coreStyles, AnimationStyles]}
-                            buttonContentRight={<div className="right--panel" onClick={() => {
-                                this.activeSlide('right')
-                            }}></div>}
-                            buttonContentLeft={<div className="left--panel" onClick={() => {
-                                this.activeSlide('left')
-                            }}></div>}
-                            selected={this.state.activeSlide}
-                            organicArrows={false}
-                            cancelOnInteraction={false} // should stop playing on user interaction
-                            interval={delay}
-                        >
-                            {this.props.data.project_images.map((p, i) => {
-                                return <React.Fragment key={i + '--frag'}>
-                                    <Section key={i + '--section'} backgroundColor="#000">
-                                        <Background key={i + '--bg'} src={this.props.url + p.url}
-                                                    blurred={this.state.navActive || this.state.arrowActive}/>
-                                    </Section>
-                                </React.Fragment>
-                            })}
-                        </Slider>
+                    <Slider
+                        play={true}
+                        infinite={true}
+                        animation="scaleOutAnimation"
+                        cssModule={[coreStyles, AnimationStyles]}
+                        buttonContentRight={<div className="right--panel" onClick={() => {
+                            this.activeSlide('right')
+                        }}></div>}
+                        buttonContentLeft={<div className="left--panel" onClick={() => {
+                            this.activeSlide('left')
+                        }}></div>}
+                        selected={this.state.activeSlide}
+                        organicArrows={false}
+                        cancelOnInteraction={false} // should stop playing on user interaction
+                        interval={delay}
+                    >
+                        {this.props.data.project_images.map((p, i) => {
+                            return <React.Fragment key={i + '--frag'}>
+                                <Section key={i + '--section'} backgroundColor="#000">
+                                    <Background key={i + '--bg'} src={this.props.url + p.url}
+                                                blurred={this.state.navActive || this.state.arrowActive}/>
+                                </Section>
+                            </React.Fragment>
+                        })}
+                    </Slider>
                     }
 
                     {isMobileAgent &&

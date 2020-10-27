@@ -26,8 +26,7 @@ html, body {
   background: black;
   overflow: hidden !important;
   @media screen and (max-width: 480px) {
-    body {
-    }
+    position: fixed;
   }
 }
 

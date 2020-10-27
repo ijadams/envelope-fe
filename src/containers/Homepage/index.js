@@ -11,18 +11,21 @@ export class Homepage extends Component {
         this.state = {
             projectsLoaded: false,
             activeIndex: 0,
-            sliderLoading: false
+            sliderLoading: false,
+            projects: null
         }
     }
 
     componentDidMount() {
 
-
-
         setTimeout(() => {
             navService.setProjectsLoaded(true);
             this.setState({projectsLoaded: true});
         }, 300)
+
+        this.projectssubcription = navService.getProjects().subscribe(data => {
+            this.setState({projects: data.projects});
+        });
 
         this.subscriptionLoader = navService.getActiveIndex().subscribe(data => {
             this.setState({
@@ -37,15 +40,36 @@ export class Homepage extends Component {
         });
     }
 
+    onWheel(event) {
+        if (event.deltaY < 0 && this.state.activeIndex !== this.state.projects.length - 1) {
+            const i = this.state.activeIndex + 1;
+            navService.setActiveIndex(i)
+            navService.toggleArrow(false);
+            navService.toggleNav(false);
+        } else if (event.deltaY > 0 && this.state.activeIndex !== 0) {
+            const i = this.state.activeIndex - 1;
+            navService.setActiveIndex(i);
+            navService.toggleArrow(false);
+            navService.toggleNav(false);
+        }
+    }
+
+    setProjects(projects) {
+        if (!this.state.projects) {
+            navService.setProjects(projects)
+        }
+    }
+
     componentWillUnmount() {
         this.subscriptionLoader.unsubscribe();
+        this.projectssubcription.unsubscribe();
     }
 
     render() {
         const url = process.env.NODE_ENV !== "development" ? '' : process.env.REACT_APP_BACKEND_URL;
 
         return (
-            <div>
+            <div onWheel={(e) => this.onWheel(e)}>
                 <Startup loaded={this.state.projectsLoaded ? setTimeout(() => {
                     return true;
                 }, 2500) : false}/>
@@ -54,10 +78,12 @@ export class Homepage extends Component {
                     {({data: {projects}}) => {
                         return (
                             <div>
+                                {this.setProjects(projects)}
                                 {this.state.projectsLoaded &&
-                                    <section id="projects">
-                                        <Project data={projects[this.state.activeIndex]} activeIndex={this.state.activeIndex} url={url} key={0}></Project>
-                                    </section>
+                                <section id="projects">
+                                    <Project data={projects[this.state.activeIndex]}
+                                             activeIndex={this.state.activeIndex} url={url} key={0}></Project>
+                                </section>
                                 }
                             </div>
                         );

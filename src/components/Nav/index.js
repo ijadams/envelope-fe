@@ -10,7 +10,6 @@ export class Nav extends Component {
             active: false,
             arrowActive: false,
             visible: false,
-            scrolled: false,
             darkText: false,
             projectsLoaded: false
         }
@@ -49,7 +48,6 @@ export class Nav extends Component {
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
         this.subscriptionArrow.unsubscribe();
         this.subscriptionNav.unsubscribe();
         this.subscriptionDarkText.unsubscribe();
@@ -66,11 +64,7 @@ export class Nav extends Component {
         navService.toggleNav(false);
     };
 
-    handleScroll = (event) => {
-        this.setState({
-            scrolled: window.scrollY !== 0
-        });
-    };
+
 
     render() {
         const w = 'https://ijadams.s3.amazonaws.com/envelope/info-white.png';
@@ -82,13 +76,15 @@ export class Nav extends Component {
         const boutline = 'https://ijadams.s3.amazonaws.com/envelope/info-black-outline.png';
         const bfill = 'https://ijadams.s3.amazonaws.com/envelope/info-button-w-f.png';
         const overlayOpen = this.state.active || this.state.arrowActive;
+        const isMobile = /Android|Mobi/i.test(navigator.userAgent);
         return (
             <div>
-                <nav className={`${this.state.visible ? "visible" : ""} ${this.state.darkText ? "dark--text" : ""}`}>
+                <nav className={`${this.state.visible ? "visible" : ""}  ${isMobile ? "mobile" : ""}  ${this.state.darkText ? "dark--text" : ""}`}>
                     <div className="info">
                         <div onClick={this.openNav}>
                             {this.state.darkText && <img src={this.state.active ? bfill : boutline} alt="chevron"/>}
-                            {!this.state.darkText && <img src={this.state.active ? b : w} alt="chevron"/>}
+                            {(!this.state.darkText && !isMobile) && <img src={this.state.active ? b : w} alt="chevron"/>}
+                            {(!this.state.darkText && isMobile) && <img src={overlayOpen ? boutline : w} alt="chevron"/>}
                         </div>
                     </div>
                     <div className={`title ${overlayOpen ? "hidden" : ""}`}>
@@ -99,7 +95,8 @@ export class Nav extends Component {
                     <div className="arrow">
                         <div onClick={this.openArrow}>
                             {this.state.darkText && <img src={this.state.arrowActive ? xb : xbc} alt="chevron"/>}
-                            {!this.state.darkText && <img src={this.state.arrowActive ? cb : cw} alt="chevron"/>}
+                            {(!this.state.darkText && !isMobile) && <img src={this.state.arrowActive ? cb : cw} alt="chevron"/>}
+                            {(!this.state.darkText && isMobile) && <img src={this.state.arrowActive ? xb : cw} alt="chevron"/>}
                         </div>
                     </div>
                 </nav>
