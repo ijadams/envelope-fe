@@ -20,6 +20,7 @@ export class Homepage extends Component {
 
 
         setTimeout(() => {
+            navService.setProjectsLoaded(true);
             this.setState({projectsLoaded: true});
         }, 300)
 

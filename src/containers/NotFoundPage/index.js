@@ -9,7 +9,7 @@ import React from 'react';
 function NotFoundPage(props) {
     return (
         <div className="not--found">
-            <p>The page you're looking for doesn't exist.</p>
+            <img alt="not found" src="https://ijadams.s3.amazonaws.com/envelope/404-Error.jpg"/>
         </div>
     );
 }

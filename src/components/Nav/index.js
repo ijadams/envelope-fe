@@ -11,7 +11,8 @@ export class Nav extends Component {
             arrowActive: false,
             visible: false,
             scrolled: false,
-            darkText: false
+            darkText: false,
+            projectsLoaded: false
         }
     }
 
@@ -34,6 +35,13 @@ export class Nav extends Component {
                 darkText: data.darkText,
             })
         });
+
+        this.subscriptionNav = navService.getProjectsLoaded().subscribe(data => {
+            this.setState({
+                projectsLoaded: data.projectsLoaded,
+            })
+        });
+
 
         setTimeout(() => {
             this.setState({visible: true});
@@ -95,8 +103,8 @@ export class Nav extends Component {
                         </div>
                     </div>
                 </nav>
-                <InfoOverlay active={this.state.active} darkText={this.state.darkText}/>
-                <ArrowOverlay active={this.state.arrowActive} darkText={this.state.darkText}/>
+                {this.state.projectsLoaded && <InfoOverlay active={this.state.active} darkText={this.state.darkText}/>}
+                {this.state.projectsLoaded && <ArrowOverlay active={this.state.arrowActive} darkText={this.state.darkText}/>}
             </div>
         );
     }
