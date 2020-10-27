@@ -37,6 +37,7 @@ export class Homepage extends Component {
         });
 
         this.subscriptionLoader = navService.getActiveIndex().subscribe(data => {
+            console.log(data);
             this.setState({
                 sliderLoading: true
             });

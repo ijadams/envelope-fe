@@ -18,6 +18,14 @@ nav {
     }
   }
 
+  @media screen and (max-width: 480px) {
+    height: 10px;
+  }
+
+  &.mobile {
+    height: 10px;
+  }
+
   &.dark--text {
     .title {
       color: black;
