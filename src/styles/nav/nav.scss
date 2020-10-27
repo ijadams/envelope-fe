@@ -12,6 +12,11 @@ nav {
   transition-delay: 0.75s;
   opacity: 0;
   z-index: 20;
+  @media screen and (min-width: 1800px) {
+    > div {
+      padding: 0 2rem;
+    }
+  }
 
   &.dark--text {
     .title {
