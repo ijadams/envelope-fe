@@ -60,12 +60,16 @@ export class Homepage extends Component {
         if (Math.abs(yDiff) > 10) {
             if ( yDiff > 0 && this.state.activeIndex > 0) {
                 /* up swipe */
+                console.log('up', yDiff)
+                console.log('up', this.state.activeIndex)
                 const i = this.state.activeIndex - 1;
                 navService.setActiveIndex(i);
                 navService.toggleArrow(false);
                 navService.toggleNav(false);
-            } else if (this.state.activeIndex < this.state.projectsLength-1) {
+            } else if (yDiff < 0 && this.state.activeIndex < this.state.projectsLength-1) {
                 /* down swipe */
+                console.log('down', yDiff)
+                console.log('down', this.state.activeIndex)
                 const i = this.state.activeIndex + 1;
                 navService.setActiveIndex(i)
                 navService.toggleArrow(false);
@@ -87,16 +91,15 @@ export class Homepage extends Component {
 
 
     onWheel(event) {
+        if (Math.abs(event.deltaY) < 10) {
+            return
+        }
         if (event.deltaY < 0 && this.state.activeIndex !== this.state.projectsLength - 1) {
             const i = this.state.activeIndex + 1;
             navService.setActiveIndex(i)
-            navService.toggleArrow(false);
-            navService.toggleNav(false);
         } else if (event.deltaY > 0 && this.state.activeIndex !== 0) {
             const i = this.state.activeIndex - 1;
             navService.setActiveIndex(i);
-            navService.toggleArrow(false);
-            navService.toggleNav(false);
         }
     }
 

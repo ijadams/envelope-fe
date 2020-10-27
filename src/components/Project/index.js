@@ -74,12 +74,10 @@ export class Project extends Component {
 
     componentDidUpdate(prevProps) {
         if (!equal(this.props.data, prevProps.data)) {
-            setTimeout(() => {
-                this.setState({
-                    startupLoaded: false,
-                    activeSlide: 0
-                });
-            }, 500)
+            this.setState({
+                startupLoaded: false,
+                activeSlide: 0
+            });
             this.componentDidMount();
         }
     }
