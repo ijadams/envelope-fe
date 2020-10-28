@@ -122,7 +122,7 @@ export class Project extends Component {
                          onClick={() => {
                              this.activeSlide('right')
                          }}
-                         className={`${this.props.activeIndex === 0 && !this.state.fingered ? "" : "hidden"}`}>
+                         className={`${this.props.activeIndex === 0 && !this.state.fingered ? "" : "hidden"} ${this.state.startupLoaded? "active" : ""}`}>
                         <img alt="finger" src={finger}/>
                     </div>
                     <div
