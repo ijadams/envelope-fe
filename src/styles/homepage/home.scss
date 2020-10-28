@@ -1,9 +1,10 @@
 #projects {
   height: 100vh;
   width: 100vw;
-
+  transition: opacity .5s ease-in-out;
   &.slide--loading {
     display: none;
+    opacity: 0;
   }
 
   #finger {
@@ -333,13 +334,15 @@
 }
 
 .slider--overlay {
-  position: absolute;
+  position: fixed;
   z-index: 0;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
   background: white;
   visibility: hidden;
-  transition: 0.5s ease-out;
+  transition: 0.65s ease-in-out;
   opacity: 0;
 
   &.active {

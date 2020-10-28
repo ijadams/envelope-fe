@@ -11,11 +11,15 @@ export const InfoOverlay = (props) => {
                 return (
                     <div className={`nav--overlay ${props.active ? "active" : ""} ${props.darkText ? "dark--text" : ""}`}>
                         <div className="info--container">
-                            <div className="top">
-                                <ReactMarkdown source={info.top}/>
+                            <div>
+                                <div className="top">
+                                    <ReactMarkdown source={info.top}/>
+                                </div>
                             </div>
-                            <div className="bottom">
-                                <ReactMarkdown source={info.bottom}/>
+                            <div>
+                                <div className="bottom">
+                                    <ReactMarkdown source={info.bottom}/>
+                                </div>
                             </div>
                         </div>
                     </div>

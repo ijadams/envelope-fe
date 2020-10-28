@@ -5,11 +5,11 @@ import {navService} from "../../services";
 
 export const ArrowOverlay = (props) => {
     const navigateToProject = (i) => {
-        navService.setActiveIndex(i);
+        navService.toggleArrow(false);
+        navService.toggleNav(false);
         setTimeout(() => {
-            navService.toggleArrow(false);
-            navService.toggleNav(false);
-        }, 500);
+            navService.setActiveIndex(i);
+        }, 25)
     };
 
     return (

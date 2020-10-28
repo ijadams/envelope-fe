@@ -37,7 +37,6 @@ export class Homepage extends Component {
         });
 
         this.subscriptionLoader = navService.getActiveIndex().subscribe(data => {
-            console.log(data);
             this.setState({
                 sliderLoading: true
             });
@@ -52,14 +51,21 @@ export class Homepage extends Component {
         });
     }
 
+
     onWheel(event) {
-        if (Math.abs(event.deltaY) < 10) {
+        if (Math.abs(event.deltaY) < 10 || this.state.sliderLoading) {
             return
         }
         if (event.deltaY < 0 && this.state.activeIndex !== this.state.projectsLength - 1) {
+            this.setState({
+                sliderLoading: true
+            });
             const i = this.state.activeIndex + 1;
             navService.setActiveIndex(i)
-        } else if (event.deltaY > 0 && this.state.activeIndex !== 0) {
+        } else if (event.deltaY > 0 &&  this.state.activeIndex > 0) {
+            this.setState({
+                sliderLoading: true
+            });
             const i = this.state.activeIndex - 1;
             navService.setActiveIndex(i);
         }

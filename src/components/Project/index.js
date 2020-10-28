@@ -55,10 +55,6 @@ export class Project extends Component {
 
         navService.setProjectsLength(this.props.projectsLength);
 
-        this.setState({
-            activeSlide: 0
-        });
-
         // loading and init
         setTimeout(() => {
             this.setState({
