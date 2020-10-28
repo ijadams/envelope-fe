@@ -146,6 +146,7 @@ export class Project extends Component {
                             this.activeSlide('left')
                         }}></div>}
                         selected={this.state.activeSlide}
+                        mobileTouch={true}
                         organicArrows={false}
                         cancelOnInteraction={false} // should stop playing on user interaction
                         interval={delay}

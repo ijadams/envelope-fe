@@ -124,7 +124,7 @@ nav {
         height: 25px;
         width: auto;
         @media screen and (max-width: 480px){
-          height: 18px;
+          height: 25px;
         }
       }
     }
@@ -294,11 +294,17 @@ nav {
 
       p {
         display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       a {
         color: white;
         text-decoration: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
         &:hover {
           text-decoration: underline;
@@ -309,6 +315,9 @@ nav {
         p, a {
           font-size: 1rem;
           display: block;
+        }
+        p {
+          margin-bottom: 1rem;
         }
       }
     }
