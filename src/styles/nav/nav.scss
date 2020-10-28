@@ -2,8 +2,6 @@ nav {
   position: fixed;
   left: 0;
   top: 1rem;
-  width: 100vw;
-  height: 5rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -66,7 +64,11 @@ nav {
 
     &.info {
       font-size: 1.8rem;
-
+      position: fixed;
+      left: 1rem;
+      top: 1rem;
+      height: 50px;
+      width: 50px;
       &:hover {
         opacity: 0.5;
       }
@@ -78,6 +80,12 @@ nav {
     }
 
     &.arrow {
+      font-size: 1.8rem;
+      position: fixed;
+      right: 1rem;
+      top: 1rem;
+      height: 50px;
+      width: 50px;
       &:hover {
         opacity: 0.5;
       }
@@ -95,11 +103,8 @@ nav {
       height: 100%;
 
       img {
-        height: 45px;
+        height: 25px;
         width: auto;
-        @media screen and (max-width: 900px) {
-          height: 25px;
-        }
       }
     }
   }
