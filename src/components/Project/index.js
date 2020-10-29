@@ -12,6 +12,7 @@ import {
     withNavigationHandlers
 } from "react-awesome-slider/dist/navigation";
 import {navService} from "../../services";
+import {isMobileAgent} from "../Cursor";
 
 const Slider = withNavigationHandlers(AwesomeSlider);
 
@@ -86,17 +87,18 @@ export class Project extends Component {
 
     activeSlide(pos) {
         this.setState({fingered: true})
+        const imgLength = isMobileAgent() ? this.props.data.project_images_mobile.length : this.props.data.project_images.length;
         if (pos === 'left') {
             if (this.state.activeSlide === 0) {
-                this.setState({activeSlide: this.props.data.project_images.length - 1})
-                this.setDarkText(this.props.data.project_images.length - 1);
+                this.setState({activeSlide: imgLength - 1})
+                this.setDarkText(imgLength - 1);
             } else {
                 this.setState({activeSlide: this.state.activeSlide - 1});
                 this.setDarkText(this.state.activeSlide - 1);
             }
         }
         if (pos === 'right') {
-            if (this.state.activeSlide === this.props.data.project_images.length - 1) {
+            if (this.state.activeSlide === imgLength - 1) {
                 this.setState({activeSlide: 0});
                 this.setDarkText(0);
             } else {
@@ -113,7 +115,8 @@ export class Project extends Component {
             const ua = navigator.userAgent;
             return /Android|Mobi/i.test(ua);
         };
-
+        console.log(isMobileAgent());
+        console.log(this);
         return (
             <div
                 className={`home--container ${this.state.startupLoaded ? "active" : ""} ${this.state.darkText ? "dark--text" : ""}`}>
@@ -135,6 +138,7 @@ export class Project extends Component {
                     </div>
                     {!isMobileAgent &&
                     <Slider
+                        className={"desktop--slider"}
                         play={true}
                         infinite={true}
                         animation="scaleOutAnimation"
@@ -164,6 +168,7 @@ export class Project extends Component {
 
                     {isMobileAgent &&
                     <Slider
+                        className={"mobile--slider"}
                         play={true}
                         infinite={true}
                         animation="scaleOutAnimation"
