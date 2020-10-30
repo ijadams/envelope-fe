@@ -111,11 +111,8 @@ export class Project extends Component {
     render() {
         const delay = this.state.delay;
         const finger = this.state.darkText ? "https://ijadams.s3.amazonaws.com/envelope/finger-b.png" : "https://ijadams.s3.amazonaws.com/envelope/finger-w.png";
-        const isMobileAgent = () => {
-            const ua = navigator.userAgent;
-            return /Android|Mobi/i.test(ua);
-        };
-        console.log(isMobileAgent());
+        const isMobile = isMobileAgent();
+        console.log(isMobile);
         console.log(this);
         return (
             <div
@@ -136,7 +133,7 @@ export class Project extends Component {
                             tags={this.props.data.project_tags}
                         />
                     </div>
-                    {!isMobileAgent &&
+                    {!isMobile &&
                     <Slider
                         className={"desktop--slider"}
                         play={true}
@@ -166,7 +163,7 @@ export class Project extends Component {
                     </Slider>
                     }
 
-                    {isMobileAgent &&
+                    {isMobile &&
                     <Slider
                         className={"mobile--slider"}
                         play={true}
